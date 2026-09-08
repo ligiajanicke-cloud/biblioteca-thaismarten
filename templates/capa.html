@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Capa — Dra. Thais Marten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../identidade-visual/identidade.css">
+</head>
+<body>
+
+<!--
+  Template de CAPA. Substitua os placeholders {{ ... }} pelo conteúdo do documento.
+  Se o documento NÃO tiver um paciente específico (ex: guia genérico), remova o
+  bloco .pcard e use só o .pill com a categoria do material.
+  Ver identidade-visual/ESPECIFICACAO.md, seção 3, para as regras completas.
+-->
+<section class="page cover">
+  <div class="cframe"></div><div class="cframe2"></div>
+  <div class="cwrap">
+    <div class="ctop"><span class="ln"></span><span class="dm">◇</span><span class="ln"></span></div>
+    <div class="cmid">
+      <h1>{{ Título do Documento }}</h1>
+      <div class="sub">{{ Subtítulo em itálico }}</div>
+      <div class="divider"><span class="ln"></span><span class="dm">◇</span><span class="ln"></span></div>
+
+      <!-- Remover este bloco se o material for genérico (sem paciente) -->
+      <div class="pcard">
+        <div class="lbl">Paciente</div>
+        <div class="pname">{{ Nome do Paciente }}</div>
+      </div>
+
+      <div class="pills">
+        <span class="pill">{{ Tag opcional 1 }}</span>
+        <span class="pill">{{ Tag opcional 2 }}</span>
+      </div>
+    </div>
+    <div class="by">
+      <div class="lbl">Material elaborado por</div>
+      <div class="nm">Dra. Thais Marten</div>
+      <div class="rl">Nutricionista Funcional Integrativa · CRN 13864</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

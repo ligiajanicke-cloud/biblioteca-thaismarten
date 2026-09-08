@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Página interna — Dra. Thais Marten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../identidade-visual/identidade.css">
+</head>
+<body>
+
+<!--
+  Template de PÁGINA INTERNA, com exemplos de todos os componentes disponíveis.
+  Copie apenas os blocos que o documento precisar — não é obrigatório usar todos.
+  Ver identidade-visual/ESPECIFICACAO.md, seções 4 e 6, para as regras completas.
+-->
+<section class="page">
+  <div class="pad">
+
+    <div class="rh">
+      <div class="wm">DRA. THAIS <b>MARTEN</b></div>
+      <div class="tag">{{ Nome do Documento }} · {{ Nome do Paciente }}</div>
+    </div>
+
+    <div class="eyebrow">{{ Categoria da Seção }}</div>
+    <h1 class="sec">{{ Título da Seção }}</h1>
+    <div class="sec-rule"></div>
+
+    <p>{{ Parágrafo de introdução da seção. Texto corrido em Lora, justificado. }}</p>
+
+    <h2 class="grp">{{ Subtítulo de grupo }}</h2>
+    <p>{{ Texto de apoio. }}</p>
+
+    <!-- Caixa de destaque simples -->
+    <div class="box">
+      <div class="bx-title"><span class="dia">◇</span> {{ Título da Caixa }}</div>
+      <p>{{ Texto da caixa. }}</p>
+    </div>
+
+    <!-- Caixa de alerta -->
+    <div class="box warn">
+      <div class="bx-title"><span class="dia">◇</span> {{ Atenção }}</div>
+      <p>{{ Texto de alerta. }}</p>
+    </div>
+
+    <!-- Painel comparativo favorável / evitar -->
+    <div class="panels">
+      <div class="panel good">
+        <div class="ptitle">✓ Favorável</div>
+        <ul>
+          <li>{{ Item favorável 1 }}</li>
+          <li>{{ Item favorável 2 }}</li>
+        </ul>
+      </div>
+      <div class="panel bad">
+        <div class="ptitle">✕ Evitar</div>
+        <ul>
+          <li>{{ Item a evitar 1 }}</li>
+          <li>{{ Item a evitar 2 }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Barra de intensidade / faixa de referência -->
+    <div class="brow">
+      <span class="bn">{{ Nome do marcador }}</span>
+      <span class="btrack">
+        <span class="bband" style="left:30%; width:40%;"></span>
+        <span class="bmark" style="left:65%;"></span>
+      </span>
+      <span class="bval">{{ valor }}</span>
+      <span class="btag high">Alto</span>
+    </div>
+
+    <!-- Tabela -->
+    <div class="rtable">
+      <div class="rt-head">{{ Cabeçalho da Tabela }}</div>
+      <div class="rt-row">
+        <span class="rt-item">{{ Item }}</span>
+        <span class="rt-desc">{{ Descrição }}</span>
+      </div>
+    </div>
+
+    <!-- Assinatura de fechamento — usar apenas na última página do documento -->
+    <div class="closing">
+      <div class="cl-lbl">Com cuidado,</div>
+      <div class="cl-nm">Dra. Thais Marten</div>
+      <div class="cl-rl">Nutricionista Funcional Integrativa · CRN 13864</div>
+    </div>
+
+    <div class="rf">
+      <span>Uso exclusivo do paciente</span>
+      <span class="dia">◇</span>
+      <span>CRN 13864</span>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

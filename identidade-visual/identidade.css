@@ -1,0 +1,146 @@
+/*
+  Identidade Visual — Dra. Thais Marten
+  Fonte da verdade: identidade-visual/ESPECIFICACAO.md
+  Não altere os valores abaixo sem atualizar a especificação e vice-versa.
+*/
+
+:root{
+  --brown:      #3E1A0C;   /* marrom principal — títulos, texto de destaque, capa */
+  --brown-2:    #5A3121;   /* marrom secundário — subtítulos, texto de apoio */
+  --gold:       #BE9B5C;   /* dourado — linhas, ícones, marcadores ◇ */
+  --gold-deep:  #A87F44;   /* dourado profundo — labels em caixa-alta, links de destaque */
+  --gold-soft:  #D8C39A;   /* dourado suave — bordas e molduras finas */
+  --cream:      #FBF6EE;   /* creme — cor de fundo de TODAS as páginas */
+  --panel:      #F4EADB;   /* creme mais escuro — fundo de caixas de destaque */
+  --panel-line: #E5D6BF;   /* borda das caixas e divisórias */
+  --track:      #EEE4D2;   /* fundo de barras (trilho) */
+  --ink:        #3A2418;   /* cor do texto corrido */
+  --muted:      #8A7360;   /* texto secundário, legendas, rodapés */
+
+  /* cores de status, usadas em barras/indicadores/comparações */
+  --amber:      #A85A2A;   /* alto / atenção / "ruim" */
+  --amber-soft: #8f4a22;   /* texto sobre fundo âmbar */
+  --sage:       #5E6B45;   /* adequado / favorável / "bom" */
+  --sage-band:  rgba(143,154,120,.30);  /* faixa de referência em gráficos */
+  --warn-panel: #F3E4D6;   /* fundo de caixa de alerta */
+  --warn-line:  #E8D0BA;   /* borda de caixa de alerta */
+  --sage-panel: #EEF0E6;   /* fundo de caixa/painel "positivo" */
+  --sage-line:  #D8DECB;   /* borda de caixa/painel "positivo" */
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Lora', Georgia, serif; color:var(--ink); background:var(--cream); -webkit-font-smoothing:antialiased; }
+
+/* página A4 a 96dpi = 794x1123px */
+.page{ position:relative; width:794px; height:1123px; overflow:hidden;
+  background:var(--cream); margin:0 auto; page-break-after:always; }
+.page:last-child{ page-break-after:auto; }
+.pad{ padding:60px 72px 64px 72px; height:100%; display:flex; flex-direction:column; }
+
+/* ---------- Cabeçalho e rodapé (páginas internas) ---------- */
+.rh{ display:flex; align-items:center; justify-content:space-between;
+  padding-bottom:13px; border-bottom:1px solid var(--panel-line); margin-bottom:24px; }
+.rh .wm{ font-family:'Lora', Georgia, serif; letter-spacing:.42em; font-size:12px; font-weight:600;
+  color:var(--brown); text-transform:uppercase; }
+.rh .wm b{ color:var(--gold-deep); }
+.rh .tag{ font-family:'Poppins', Arial, sans-serif; font-size:8.5px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--muted); }
+
+.rf{ margin-top:auto; padding-top:14px; border-top:1px solid var(--panel-line);
+  display:flex; align-items:center; justify-content:space-between;
+  font-family:'Poppins', Arial, sans-serif; font-size:7.6px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted); }
+.rf .dia{ color:var(--gold); }
+
+/* ---------- Títulos e texto corrido ---------- */
+.eyebrow{ font-family:'Poppins', Arial, sans-serif; font-size:9px; letter-spacing:.34em;
+  text-transform:uppercase; color:var(--gold-deep); margin-bottom:9px; }
+h1.sec{ font-family:'Lora', Georgia, serif; font-size:25px; font-weight:600; color:var(--brown); line-height:1.18; }
+.sec-rule{ width:50px; height:2px; background:var(--gold); margin:13px 0 18px; }
+h2.grp{ font-family:'Lora', Georgia, serif; font-size:15px; font-weight:600; color:var(--brown); margin:15px 0 6px; }
+p{ font-family:'Lora', Georgia, serif; font-size:12px; line-height:1.62; color:var(--ink); margin-bottom:9px; text-align:justify; }
+
+/* ---------- Caixas de destaque ---------- */
+.box{ background:var(--panel); border:1px solid var(--panel-line); border-radius:14px;
+  padding:17px 22px; margin:8px 0; }
+.box .bx-title{ font-family:'Poppins', Arial, sans-serif; font-size:9.3px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--gold-deep); margin-bottom:9px; }
+.box .bx-title .dia{ color:var(--gold); }
+.box.warn{ background:var(--warn-panel); border-color:var(--warn-line); }
+.box.warn .bx-title{ color:var(--amber); }
+.box.brown{ background:var(--brown); border-color:var(--brown); }
+.box.brown .bx-title{ color:var(--gold); }
+.box.brown p{ color:#F0E4D2; }
+
+/* ---------- Painel comparativo bom/ruim ---------- */
+.panels{ display:flex; gap:14px; }
+.panel{ flex:1; border-radius:14px; padding:16px 19px; }
+.panel .ptitle{ font-family:'Poppins', Arial, sans-serif; font-size:9px; letter-spacing:.14em;
+  text-transform:uppercase; margin-bottom:10px; }
+.panel ul{ list-style:none; }
+.panel li{ font-family:'Lora', Georgia, serif; font-size:11.5px; line-height:1.6; color:var(--ink);
+  padding-left:16px; position:relative; margin-bottom:4px; }
+.panel.good{ background:var(--sage-panel); border:1px solid var(--sage-line); }
+.panel.good .ptitle{ color:var(--sage); }
+.panel.good li::before{ content:'✓'; position:absolute; left:0; color:var(--sage); }
+.panel.bad{ background:var(--warn-panel); border:1px solid var(--warn-line); }
+.panel.bad .ptitle{ color:var(--amber); }
+.panel.bad li::before{ content:'✕'; position:absolute; left:0; color:var(--amber); }
+
+/* ---------- Barra de intensidade / faixa de referência ---------- */
+.brow{ display:flex; align-items:center; gap:12px; margin:7px 0; }
+.brow .bn{ width:200px; font-family:'Lora', Georgia, serif; font-size:10.8px; color:var(--ink); }
+.brow .btrack{ flex:1; height:12px; border-radius:6px; background:var(--track); position:relative; }
+.brow .bband{ position:absolute; top:0; bottom:0; background:var(--sage-band);
+  border-left:1px solid rgba(143,154,120,.55); border-right:1px solid rgba(143,154,120,.55); }
+.brow .bmark{ position:absolute; top:-2px; bottom:-2px; width:2.5px; background:var(--amber); border-radius:2px; }
+.brow .bval{ width:44px; font-family:'Poppins', Arial, sans-serif; font-size:9px; text-align:right; color:var(--ink); }
+.brow .btag{ width:74px; text-align:center; font-family:'Poppins', Arial, sans-serif; font-size:7.5px;
+  text-transform:uppercase; padding:3px 0; border-radius:10px; }
+.brow .btag.high{ background:rgba(168,90,42,.12); color:var(--amber-soft); }
+.brow .btag.ok{ background:rgba(94,107,69,.14); color:var(--sage); }
+
+/* ---------- Tabela ---------- */
+.rtable{ border:1px solid var(--panel-line); border-radius:12px; overflow:hidden; }
+.rt-head{ background:var(--panel); font-family:'Poppins', Arial, sans-serif; font-size:9px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--gold-deep); padding:9px 16px; border-bottom:1px solid var(--panel-line); }
+.rt-row{ display:flex; gap:14px; padding:8px 16px; border-bottom:1px solid var(--panel-line); }
+.rt-row:last-child{ border-bottom:none; }
+.rt-row .rt-item{ width:150px; flex-shrink:0; font-weight:600; color:var(--brown); font-size:10.8px; font-family:'Lora', Georgia, serif; }
+.rt-row .rt-desc{ font-size:10.8px; font-family:'Lora', Georgia, serif; color:var(--ink); }
+
+/* ---------- Assinatura de fechamento ---------- */
+.closing{ text-align:center; margin-top:28px; }
+.closing .cl-lbl{ font-family:'Poppins', Arial, sans-serif; font-size:8.5px; letter-spacing:.26em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+.closing .cl-nm{ font-family:'Lora', Georgia, serif; font-size:20px; color:var(--brown); }
+.closing .cl-rl{ font-family:'Poppins', Arial, sans-serif; font-size:8.6px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--gold-deep); margin-top:6px; }
+
+/* ---------- Capa — todo elemento declara a fonte explicitamente, nunca depende só de herança ---------- */
+.cover{ background:var(--cream); }
+.cframe{ position:absolute; inset:34px; border:1px solid var(--gold-soft); border-radius:3px; }
+.cframe2{ position:absolute; inset:40px; border:1px solid rgba(190,155,92,.32); }
+.cwrap{ position:relative; height:100%; display:flex; flex-direction:column; align-items:center; text-align:center; padding:96px 84px 80px; }
+.cwrap .ctop{ display:flex; align-items:center; gap:14px; color:var(--gold); }
+.cwrap .ctop .ln{ width:54px; height:1px; background:var(--gold-soft); }
+.cwrap .ctop .dm{ font-family:'Lora', Georgia, serif; font-size:12px; }
+.cwrap .cmid{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+
+.cover h1{ font-family:'Lora', Georgia, serif; font-size:38px; font-weight:600; color:var(--brown); text-align:center; }
+.cover .sub{ font-family:'Lora', Georgia, serif; font-style:italic; color:var(--muted); text-align:center; font-size:14.5px; margin-top:14px; }
+.cover .divider{ display:flex; align-items:center; gap:14px; margin:28px 0 22px; color:var(--gold); }
+.cover .divider .ln{ width:64px; height:1px; background:var(--gold-soft); }
+.cover .divider .dm{ font-family:'Lora', Georgia, serif; color:var(--gold); font-size:12px; }
+
+.cover .pcard{ border:1px solid var(--gold-soft); border-radius:8px; padding:16px 48px; background:#fff; margin-bottom:22px; }
+.cover .pcard .lbl{ font-family:'Poppins', Arial, sans-serif; font-size:8.5px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:7px; text-align:center; }
+.cover .pcard .pname{ font-family:'Lora', Georgia, serif; font-size:21px; color:var(--brown); letter-spacing:.03em; text-align:center; }
+
+.cover .pills{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+.cover .pill{ border:1px solid var(--gold-soft); border-radius:16px; padding:5px 13px; font-family:'Poppins', Arial, sans-serif; font-size:8.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--brown-2); background:#fff; }
+
+.cover .by{ margin-top:auto; }
+.cover .by .lbl{ font-family:'Poppins', Arial, sans-serif; font-size:8px; letter-spacing:.28em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; text-align:center; }
+.cover .by .nm{ font-family:'Lora', Georgia, serif; font-size:18px; color:var(--brown); text-align:center; }
+.cover .by .rl{ font-family:'Poppins', Arial, sans-serif; font-size:8.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-deep); margin-top:6px; text-align:center; }
