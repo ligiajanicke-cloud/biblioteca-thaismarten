@@ -208,6 +208,8 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
 .card{
   display:flex;
   flex-direction:column;
+  width:100%;
+  text-align:left;
   background:#fff;
   border:1px solid var(--panel-line);
   border-radius:var(--radius-card);
@@ -339,4 +341,113 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
   .destaque-grid{ grid-template-columns:repeat(2,1fr); gap:22px; }
 
   .card-titulo{ font-size:17.5px; }
+}
+
+/* ---------- Título de seção em duas linhas (títulos longos, ex: vídeos) ---------- */
+.section-title.stack{
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+}
+.section-title.stack h2{
+  line-height:1.3;
+}
+
+/* ---------- Card de vídeo ---------- */
+.video-card{ cursor:pointer; }
+.video-card .card-cover{ aspect-ratio:16/9; }
+.video-card .card-cover img{ object-position:center center; }
+
+.play-badge{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:rgba(62,26,12,.85);
+  color:#F4E9D8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background .15s ease, transform .15s ease;
+}
+.play-badge svg{ margin-left:2px; }
+.video-card:hover .play-badge{
+  background:var(--brown);
+  transform:translate(-50%,-50%) scale(1.06);
+}
+
+/* ---------- Modal de vídeo (player incorporado do YouTube) ---------- */
+.video-modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  overflow-y:auto;
+}
+.video-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(58,36,24,.72);
+}
+.video-modal-panel{
+  position:relative;
+  width:100%;
+  max-width:900px;
+  max-height:calc(100vh - 32px);
+  overflow:auto;
+  background:var(--cream);
+  border:1px solid var(--gold-soft);
+  border-radius:16px;
+  padding:16px 16px 18px;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.45);
+}
+.video-modal-close{
+  position:absolute;
+  top:8px;
+  right:8px;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:var(--brown);
+  color:#F4E9D8;
+  font-size:20px;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1;
+}
+.video-modal-frame{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:10px;
+  overflow:hidden;
+  background:#000;
+  margin-top:8px;
+}
+.video-modal-frame iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+.video-modal-title{
+  margin-top:14px;
+  font-family:'Lora', Georgia, serif;
+  font-size:14px;
+  color:var(--brown);
+  text-align:center;
+}
+
+@media (min-width:640px){
+  .video-modal-panel{ padding:20px 20px 22px; }
+  .video-modal-close{ top:12px; right:12px; }
 }

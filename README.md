@@ -21,10 +21,13 @@ templates/
   pagina-interna.html  Template de página interna com todos os componentes disponíveis
 
 src/                   Site "Biblioteca do Paciente" (Astro)
-  data/materiais.json  Fonte única dos materiais exibidos no site
-  components/          Header, busca, filtros, card, capa-placeholder, rodapé
+  data/materiais.json  Fonte única dos materiais (PDFs) exibidos no site
+  data/videos.json     Fonte única dos vídeos (tutoriais do YouTube)
+  components/          Header, busca, filtros, card de material, card de vídeo,
+                       modal de vídeo, capa-placeholder, rodapé
   pages/index.astro    Página única da biblioteca
   styles/global.css    Paleta e tipografia do site (mesmos tokens da identidade)
+  utils/youtube.ts     Extrai o ID do vídeo e monta a URL da thumbnail
 public/
   materiais/           PDFs servidos pelo site
   capas/                Imagens de capa próprias dos materiais (opcional)
@@ -71,6 +74,31 @@ A busca (título, descrição, categoria, tags) e os filtros de categoria são
 Materiais com dados individuais de pacientes (planos nominais, exames
 pessoais) **não devem** entrar nesta biblioteca — ela é só para conteúdo
 educativo genérico.
+
+### Como adicionar um novo vídeo
+
+O vídeo precisa já estar público no YouTube. Só é preciso:
+
+1. Adicionar uma entrada em `src/data/videos.json`:
+   ```json
+   {
+     "id": "identificador-unico",
+     "titulo": "Título do vídeo",
+     "descricao": "Descrição curta e real do conteúdo.",
+     "categoria": "Uma das categorias já existentes (ou uma nova)",
+     "youtubeUrl": "https://youtu.be/XXXXXXXXXXX",
+     "destaque": false,
+     "tags": ["tag1", "tag2"]
+   }
+   ```
+
+A thumbnail é obtida automaticamente do YouTube (`img.youtube.com`) a partir do
+`youtubeUrl` — não precisa subir imagem nenhuma. O player só carrega quando o
+paciente clica no card (thumbnail + selo de play até lá), para a página não
+ficar pesada com vários vídeos incorporados de uma vez; o vídeo abre num modal
+dentro da própria biblioteca e é removido do DOM ao fechar (o que também para
+a reprodução). A busca e os filtros de categoria enxergam vídeos e documentos
+juntos, pela mesma lógica.
 
 ## Como criar um novo documento
 

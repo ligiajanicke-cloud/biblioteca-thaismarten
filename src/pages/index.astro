@@ -4,11 +4,15 @@ import Header from '../components/Header.astro';
 import SearchBar from '../components/SearchBar.astro';
 import CategoryFilters from '../components/CategoryFilters.astro';
 import MaterialCard from '../components/MaterialCard.astro';
+import VideoCard from '../components/VideoCard.astro';
+import VideoModal from '../components/VideoModal.astro';
 import Footer from '../components/Footer.astro';
 import materiais from '../data/materiais.json';
+import videos from '../data/videos.json';
 
-const categorias = [...new Set(materiais.map((m) => m.categoria))].sort();
+const categorias = [...new Set([...materiais.map((m) => m.categoria), ...videos.map((v) => v.categoria)])].sort();
 const destaques = materiais.filter((m) => m.destaque);
+const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a.destaque));
 ---
 <Layout title="Biblioteca do Paciente · Dra. Thais Marten">
   <Header />
@@ -38,16 +42,31 @@ const destaques = materiais.filter((m) => m.destaque);
         Nenhum material encontrado com esses filtros.
       </p>
     </section>
+
+    {videosOrdenados.length > 0 && (
+      <section class="section">
+        <div class="section-title stack">
+          <span class="eyebrow">◇ Vídeos</span>
+          <h2>Tutoriais para Coleta de Exames de Precisão</h2>
+        </div>
+        <div class="grid" id="grade-videos">
+          {videosOrdenados.map((video) => <VideoCard video={video} />)}
+        </div>
+        <p class="empty-state" id="estado-vazio-videos" hidden>
+          Nenhum vídeo encontrado com esses filtros.
+        </p>
+      </section>
+    )}
   </main>
 
   <Footer />
+  <VideoModal />
 
   <script>
     const input = document.querySelector<HTMLInputElement>('#busca-input');
     const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
-    const cards = document.querySelectorAll<HTMLAnchorElement>('[data-card]');
+    const cards = document.querySelectorAll<HTMLElement>('[data-card]');
     const destaquesSection = document.querySelector<HTMLElement>('#secao-destaques');
-    const emptyState = document.querySelector<HTMLElement>('#estado-vazio');
 
     let categoriaAtiva = 'todos';
 
@@ -55,19 +74,25 @@ const destaques = materiais.filter((m) => m.destaque);
       return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     }
 
+    function atualizarEstadoVazio(gridSeletor: string, emptyId: string) {
+      const grid = document.querySelector<HTMLElement>(gridSeletor);
+      const empty = document.querySelector<HTMLElement>(emptyId);
+      if (!grid || !empty) return;
+      const visiveis = grid.querySelectorAll('[data-card]:not([hidden])').length;
+      empty.hidden = visiveis > 0;
+    }
+
     function aplicarFiltros() {
       const termo = normalizar((input?.value ?? '').trim().toLowerCase());
-      let visiveis = 0;
 
       cards.forEach((card) => {
         const categoriaOk = categoriaAtiva === 'todos' || card.dataset.categoria === categoriaAtiva;
         const buscaOk = termo === '' || (card.dataset.busca ?? '').includes(termo);
-        const mostrar = categoriaOk && buscaOk;
-        card.hidden = !mostrar;
-        if (mostrar) visiveis += 1;
+        card.hidden = !(categoriaOk && buscaOk);
       });
 
-      if (emptyState) emptyState.hidden = visiveis > 0;
+      atualizarEstadoVazio('#grade-materiais', '#estado-vazio');
+      atualizarEstadoVazio('#grade-videos', '#estado-vazio-videos');
 
       if (destaquesSection) {
         destaquesSection.hidden = termo !== '' || categoriaAtiva !== 'todos';
@@ -82,6 +107,50 @@ const destaques = materiais.filter((m) => m.destaque);
         chips.forEach((c) => c.classList.toggle('active', c === chip));
         aplicarFiltros();
       });
+    });
+
+    const modal = document.querySelector<HTMLElement>('#video-modal');
+    const modalFrame = document.querySelector<HTMLElement>('#video-modal-frame');
+    const modalTitle = document.querySelector<HTMLElement>('#video-modal-title');
+    let ultimoFoco: HTMLElement | null = null;
+
+    function abrirVideo(videoId: string, titulo: string) {
+      if (!modal || !modalFrame) return;
+      ultimoFoco = document.activeElement as HTMLElement | null;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.title = titulo;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      modalFrame.replaceChildren(iframe);
+      if (modalTitle) modalTitle.textContent = titulo;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      modal.querySelector<HTMLElement>('.video-modal-close')?.focus();
+    }
+
+    function fecharVideo() {
+      if (!modal || !modalFrame) return;
+      modal.hidden = true;
+      modalFrame.replaceChildren();
+      document.body.style.overflow = '';
+      ultimoFoco?.focus();
+    }
+
+    document.querySelectorAll<HTMLElement>('[data-video-id]').forEach((card) => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.videoId;
+        const titulo = card.dataset.videoTitle ?? '';
+        if (id) abrirVideo(id, titulo);
+      });
+    });
+
+    modal?.querySelectorAll<HTMLElement>('[data-close-modal]').forEach((el) => {
+      el.addEventListener('click', fecharVideo);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && !modal.hidden) fecharVideo();
     });
   </script>
 </Layout>

@@ -1,0 +1,48 @@
+---
+import { getYouTubeId, getYouTubeThumbnail } from '../utils/youtube';
+
+interface Video {
+  id: string;
+  titulo: string;
+  descricao: string;
+  categoria: string;
+  youtubeUrl: string;
+  destaque: boolean;
+  tags: string[];
+}
+
+interface Props {
+  video: Video;
+}
+
+const { video } = Astro.props;
+const ytId = getYouTubeId(video.youtubeUrl);
+const thumb = getYouTubeThumbnail(video.youtubeUrl);
+const buscaTexto = [video.titulo, video.descricao, video.categoria, ...video.tags]
+  .join(' ')
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '');
+---
+<button
+  type="button"
+  class:list={['card', 'video-card', { destaque: video.destaque }]}
+  data-card
+  data-categoria={video.categoria}
+  data-busca={buscaTexto}
+  data-video-id={ytId}
+  data-video-title={video.titulo}
+>
+  <div class="card-cover">
+    <img src={thumb} alt={video.titulo} loading="lazy" />
+    <span class="play-badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+    </span>
+  </div>
+  <div class="card-body">
+    <div class="card-categoria">{video.categoria}</div>
+    <h3 class="card-titulo">{video.titulo}</h3>
+    <p class="card-descricao">{video.descricao}</p>
+    <span class="card-cta">Assistir ▶</span>
+  </div>
+</button>
