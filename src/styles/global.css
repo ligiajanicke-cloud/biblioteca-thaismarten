@@ -1,0 +1,343 @@
+/*
+  Biblioteca do Paciente — Dra. Thais Marten
+  Paleta e tipografia herdadas de identidade-visual/ESPECIFICACAO.md.
+  Não alterar estes valores sem atualizar a especificação da marca.
+*/
+
+:root{
+  --brown:      #3E1A0C;
+  --brown-2:    #5A3121;
+  --gold:       #BE9B5C;
+  --gold-deep:  #A87F44;
+  --gold-soft:  #D8C39A;
+  --cream:      #FBF6EE;
+  --panel:      #F4EADB;
+  --panel-line: #E5D6BF;
+  --ink:        #3A2418;
+  --muted:      #8A7360;
+
+  --container: 1100px;
+  --radius-card: 16px;
+  --radius-pill: 999px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+[hidden]{ display:none !important; }
+
+html{ background:var(--cream); }
+
+body{
+  font-family:'Lora', Georgia, serif;
+  color:var(--ink);
+  background:var(--cream);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+img{ max-width:100%; display:block; }
+
+a{ color:inherit; text-decoration:none; }
+
+button{ font:inherit; color:inherit; background:none; border:none; cursor:pointer; }
+
+.wrap{
+  width:100%;
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* ---------- Cabeçalho ---------- */
+.site-header{
+  padding:40px 0 28px;
+  text-align:center;
+  border-bottom:1px solid var(--panel-line);
+}
+
+.brandmark{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:'Lora', Georgia, serif;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--brown);
+  margin-bottom:18px;
+}
+.brandmark b{ color:var(--gold-deep); }
+.brandmark .dia{ color:var(--gold); font-size:11px; }
+
+.site-header h1{
+  font-family:'Lora', Georgia, serif;
+  font-size:30px;
+  font-weight:600;
+  color:var(--brown);
+  line-height:1.2;
+}
+
+.site-header .subtitulo{
+  font-family:'Lora', Georgia, serif;
+  font-style:italic;
+  color:var(--muted);
+  font-size:14px;
+  max-width:460px;
+  margin:14px auto 0;
+  line-height:1.6;
+}
+
+/* ---------- Busca ---------- */
+.search-section{ padding:24px 0 0; }
+
+.search-box{
+  position:relative;
+  max-width:520px;
+  margin:0 auto;
+}
+
+.search-box input{
+  width:100%;
+  font-family:'Lora', Georgia, serif;
+  font-size:15px;
+  color:var(--ink);
+  background:#fff;
+  border:1px solid var(--gold-soft);
+  border-radius:var(--radius-pill);
+  padding:13px 20px 13px 44px;
+  outline:none;
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+.search-box input::placeholder{ color:var(--muted); opacity:.85; }
+.search-box input:focus{
+  border-color:var(--gold-deep);
+  box-shadow:0 0 0 3px rgba(190,155,92,.18);
+}
+
+.search-box .icon{
+  position:absolute;
+  left:17px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--gold-deep);
+  font-size:15px;
+  pointer-events:none;
+}
+
+/* ---------- Filtros de categoria ---------- */
+.filters{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding:20px 20px 4px;
+  margin:0 -20px;
+}
+.filters::-webkit-scrollbar{ display:none; }
+
+.filter-chip{
+  flex:0 0 auto;
+  font-family:'Poppins', Arial, sans-serif;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--brown-2);
+  background:#fff;
+  border:1px solid var(--gold-soft);
+  border-radius:var(--radius-pill);
+  padding:10px 18px;
+  white-space:nowrap;
+  min-height:40px;
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
+}
+.filter-chip.active,
+.filter-chip:hover{
+  background:var(--brown);
+  border-color:var(--brown);
+  color:#F4E9D8;
+}
+
+/* ---------- Seções ---------- */
+.section{ padding:36px 0 0; }
+
+.section-title{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:16px;
+}
+.section-title .eyebrow{
+  font-family:'Poppins', Arial, sans-serif;
+  font-size:10px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+}
+.section-title h2{
+  font-family:'Lora', Georgia, serif;
+  font-size:19px;
+  font-weight:600;
+  color:var(--brown);
+}
+
+.empty-state{
+  text-align:center;
+  color:var(--muted);
+  font-family:'Lora', Georgia, serif;
+  font-style:italic;
+  font-size:13.5px;
+  padding:48px 20px;
+}
+
+/* ---------- Grade de materiais ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+
+.destaque-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+
+/* ---------- Card ---------- */
+.card{
+  display:flex;
+  flex-direction:column;
+  background:#fff;
+  border:1px solid var(--panel-line);
+  border-radius:var(--radius-card);
+  overflow:hidden;
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px -14px rgba(62,26,12,.28);
+  border-color:var(--gold-soft);
+}
+
+.card-cover{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/3;
+  background:var(--panel);
+  overflow:hidden;
+}
+.card-cover img{ width:100%; height:100%; object-fit:cover; }
+.card-cover svg{ width:100%; height:100%; display:block; }
+
+.card-body{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  padding:18px 18px 20px;
+}
+
+.card-categoria{
+  font-family:'Poppins', Arial, sans-serif;
+  font-size:9.5px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  margin-bottom:8px;
+}
+
+.card-titulo{
+  font-family:'Lora', Georgia, serif;
+  font-size:16.5px;
+  font-weight:600;
+  color:var(--brown);
+  line-height:1.32;
+  margin-bottom:8px;
+}
+
+.card-descricao{
+  font-family:'Lora', Georgia, serif;
+  font-size:12.5px;
+  line-height:1.55;
+  color:var(--ink);
+  opacity:.88;
+  margin-bottom:16px;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.card-cta{
+  margin-top:auto;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  align-self:flex-start;
+  font-family:'Poppins', Arial, sans-serif;
+  font-size:10.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--brown);
+  background:var(--panel);
+  border:1px solid var(--gold-soft);
+  border-radius:var(--radius-pill);
+  padding:9px 18px;
+  min-height:40px;
+  transition:background .15s ease, color .15s ease;
+}
+.card:hover .card-cta{
+  background:var(--brown);
+  border-color:var(--brown);
+  color:#F4E9D8;
+}
+
+/* card em destaque: leve variação para se distinguir na galeria */
+.card.destaque{ border-color:var(--gold-soft); }
+.card.destaque .card-cover{ aspect-ratio:16/10; }
+
+/* ---------- Rodapé ---------- */
+.site-footer{
+  margin-top:56px;
+  padding:28px 0 40px;
+  border-top:1px solid var(--panel-line);
+  text-align:center;
+}
+.site-footer .nome{
+  font-family:'Lora', Georgia, serif;
+  font-size:14px;
+  color:var(--brown);
+  margin-bottom:4px;
+}
+.site-footer .cargo{
+  font-family:'Poppins', Arial, sans-serif;
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+}
+
+/* ---------- Responsivo — tablet ---------- */
+@media (min-width:640px){
+  .site-header{ padding:56px 0 34px; }
+  .site-header h1{ font-size:36px; }
+  .site-header .subtitulo{ font-size:15px; max-width:520px; }
+
+  .grid{ grid-template-columns:repeat(2,1fr); }
+  .destaque-grid{ grid-template-columns:repeat(2,1fr); }
+
+  .filters{ justify-content:center; overflow-x:visible; flex-wrap:wrap; }
+}
+
+/* ---------- Responsivo — desktop ---------- */
+@media (min-width:960px){
+  .wrap{ padding:0 32px; }
+
+  .site-header{ padding:72px 0 40px; }
+  .site-header h1{ font-size:42px; }
+
+  .grid{ grid-template-columns:repeat(3,1fr); gap:22px; }
+  .destaque-grid{ grid-template-columns:repeat(2,1fr); gap:22px; }
+
+  .card-titulo{ font-size:17.5px; }
+}

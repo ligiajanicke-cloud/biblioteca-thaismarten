@@ -1,0 +1,22 @@
+[
+  {
+    "id": "ordem-dos-alimentos",
+    "titulo": "A Ordem dos Alimentos Muda o Resultado",
+    "descricao": "Guia prático para o controle do peso e da glicose: a sequência ideal para comer cada grupo de alimentos e potencializar saciedade e equilíbrio glicêmico.",
+    "categoria": "Comece aqui",
+    "arquivo": "/materiais/guia-ordem-dos-alimentos.pdf",
+    "imagem": "",
+    "destaque": true,
+    "tags": ["glicose", "emagrecimento", "protocolo", "saciedade", "insulina"]
+  },
+  {
+    "id": "receitas-cafe-e-lanche",
+    "titulo": "Receitas para Café da Manhã e Lanche da Tarde",
+    "descricao": "Ebook com receitas variadas, seguras e saborosas para o dia a dia — sem leite de vaca, sem glúten e Low FODMAP.",
+    "categoria": "Receitas",
+    "arquivo": "/materiais/receitas-cafe-e-lanche.pdf",
+    "imagem": "",
+    "destaque": true,
+    "tags": ["receitas", "sem glúten", "sem lactose", "low fodmap", "café da manhã", "lanche da tarde"]
+  }
+]

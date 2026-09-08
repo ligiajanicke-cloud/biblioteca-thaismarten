@@ -1,0 +1,13 @@
+---
+interface Props {
+  categorias: string[];
+}
+
+const { categorias } = Astro.props;
+---
+<nav class="filters" aria-label="Filtrar por categoria">
+  <button class="filter-chip active" type="button" data-filtro="todos">Todos</button>
+  {categorias.map((categoria) => (
+    <button class="filter-chip" type="button" data-filtro={categoria}>{categoria}</button>
+  ))}
+</nav>

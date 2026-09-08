@@ -1,0 +1,47 @@
+---
+import CoverPlaceholder from './CoverPlaceholder.astro';
+
+interface Material {
+  id: string;
+  titulo: string;
+  descricao: string;
+  categoria: string;
+  arquivo: string;
+  imagem: string;
+  destaque: boolean;
+  tags: string[];
+}
+
+interface Props {
+  material: Material;
+}
+
+const { material } = Astro.props;
+const buscaTexto = [material.titulo, material.descricao, material.categoria, ...material.tags]
+  .join(' ')
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '');
+---
+<a
+  class:list={['card', { destaque: material.destaque }]}
+  href={material.arquivo}
+  target="_blank"
+  rel="noopener"
+  data-card
+  data-categoria={material.categoria}
+  data-busca={buscaTexto}
+>
+  <div class="card-cover">
+    {material.imagem
+      ? <img src={material.imagem} alt={material.titulo} loading="lazy" />
+      : <CoverPlaceholder categoria={material.categoria} />
+    }
+  </div>
+  <div class="card-body">
+    <div class="card-categoria">{material.categoria}</div>
+    <h3 class="card-titulo">{material.titulo}</h3>
+    <p class="card-descricao">{material.descricao}</p>
+    <span class="card-cta">Ver material →</span>
+  </div>
+</a>

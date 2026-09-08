@@ -1,23 +1,76 @@
 # Biblioteca — Dra. Thais Marten
 
-Base de identidade visual para os materiais da Dra. Thais Marten (Nutrição
-Funcional Integrativa · CRN 13864): planos alimentares, guias e receitas.
+Identidade visual e site "Biblioteca do Paciente" da Dra. Thais Marten
+(Nutrição Funcional Integrativa · CRN 13864): uma central onde pacientes
+acessam PDFs, guias e receitas — sem login, sem prontuário, sem dados
+individuais.
 
 Esta identidade **não foi inventada aqui** — ela foi extraída dos materiais já
 em uso (planos de pacientes, guias e receitas entregues) e consolidada na
-especificação abaixo. Qualquer documento novo deve reutilizar exatamente esta
-base, sem alterar cores, fontes ou estrutura.
+especificação abaixo. Qualquer documento ou página nova deve reutilizar
+exatamente esta base, sem alterar cores, fontes ou estrutura.
 
 ## Estrutura
 
 ```
 identidade-visual/
   ESPECIFICACAO.md   Especificação completa (paleta, tipografia, regras de capa/página)
-  identidade.css      CSS único com as variáveis e todos os componentes visuais
+  identidade.css      CSS único com as variáveis e todos os componentes visuais (uso em PDFs)
 templates/
   capa.html            Template de capa (título, subtítulo, paciente, assinatura)
   pagina-interna.html  Template de página interna com todos os componentes disponíveis
+
+src/                   Site "Biblioteca do Paciente" (Astro)
+  data/materiais.json  Fonte única dos materiais exibidos no site
+  components/          Header, busca, filtros, card, capa-placeholder, rodapé
+  pages/index.astro    Página única da biblioteca
+  styles/global.css    Paleta e tipografia do site (mesmos tokens da identidade)
+public/
+  materiais/           PDFs servidos pelo site
+  capas/                Imagens de capa próprias dos materiais (opcional)
 ```
+
+## Site "Biblioteca do Paciente"
+
+Site estático feito em Astro, mobile-first, sem login e sem banco de dados.
+
+```
+npm install
+npm run dev       # ambiente de desenvolvimento
+npm run build     # gera a versão estática em dist/
+npm run preview   # serve a versão de produção localmente
+```
+
+### Como adicionar um novo material
+
+Não é necessário editar componentes ou páginas — apenas:
+
+1. Coloque o PDF em `public/materiais/`.
+2. (Opcional) Coloque uma capa própria em `public/capas/`. Se não houver
+   capa, o site gera automaticamente um placeholder elegante na identidade
+   da marca (moldura dourada, ornamento ◇, nome da categoria) — nunca uma
+   imagem genérica de nutrição.
+3. Adicione uma entrada em `src/data/materiais.json`:
+   ```json
+   {
+     "id": "identificador-unico",
+     "titulo": "Título do material",
+     "descricao": "Descrição curta e real do conteúdo.",
+     "categoria": "Uma das categorias (ou uma nova — os filtros são gerados a partir dos dados)",
+     "arquivo": "/materiais/nome-do-arquivo.pdf",
+     "imagem": "/capas/nome-da-capa.jpg",
+     "destaque": false,
+     "tags": ["tag1", "tag2"]
+   }
+   ```
+   Deixe `"imagem": ""` para usar o placeholder automático.
+
+A busca (título, descrição, categoria, tags) e os filtros de categoria são
+100% client-side e instantâneos — nenhuma dependência além do Astro.
+
+Materiais com dados individuais de pacientes (planos nominais, exames
+pessoais) **não devem** entrar nesta biblioteca — ela é só para conteúdo
+educativo genérico.
 
 ## Como criar um novo documento
 

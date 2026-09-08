@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SearchBar from '../components/SearchBar.astro';
+import CategoryFilters from '../components/CategoryFilters.astro';
+import MaterialCard from '../components/MaterialCard.astro';
+import Footer from '../components/Footer.astro';
+import materiais from '../data/materiais.json';
+
+const categorias = [...new Set(materiais.map((m) => m.categoria))].sort();
+const destaques = materiais.filter((m) => m.destaque);
+---
+<Layout title="Biblioteca do Paciente · Dra. Thais Marten">
+  <Header />
+  <SearchBar />
+  <CategoryFilters categorias={categorias} />
+
+  <main class="wrap">
+    {destaques.length > 0 && (
+      <section class="section" id="secao-destaques">
+        <div class="section-title">
+          <span class="eyebrow">◇ Em destaque</span>
+        </div>
+        <div class="destaque-grid">
+          {destaques.map((material) => <MaterialCard material={material} />)}
+        </div>
+      </section>
+    )}
+
+    <section class="section">
+      <div class="section-title">
+        <span class="eyebrow">◇ Biblioteca completa</span>
+      </div>
+      <div class="grid" id="grade-materiais">
+        {materiais.map((material) => <MaterialCard material={material} />)}
+      </div>
+      <p class="empty-state" id="estado-vazio" hidden>
+        Nenhum material encontrado com esses filtros.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+
+  <script>
+    const input = document.querySelector<HTMLInputElement>('#busca-input');
+    const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
+    const cards = document.querySelectorAll<HTMLAnchorElement>('[data-card]');
+    const destaquesSection = document.querySelector<HTMLElement>('#secao-destaques');
+    const emptyState = document.querySelector<HTMLElement>('#estado-vazio');
+
+    let categoriaAtiva = 'todos';
+
+    function normalizar(texto: string) {
+      return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function aplicarFiltros() {
+      const termo = normalizar((input?.value ?? '').trim().toLowerCase());
+      let visiveis = 0;
+
+      cards.forEach((card) => {
+        const categoriaOk = categoriaAtiva === 'todos' || card.dataset.categoria === categoriaAtiva;
+        const buscaOk = termo === '' || (card.dataset.busca ?? '').includes(termo);
+        const mostrar = categoriaOk && buscaOk;
+        card.hidden = !mostrar;
+        if (mostrar) visiveis += 1;
+      });
+
+      if (emptyState) emptyState.hidden = visiveis > 0;
+
+      if (destaquesSection) {
+        destaquesSection.hidden = termo !== '' || categoriaAtiva !== 'todos';
+      }
+    }
+
+    input?.addEventListener('input', aplicarFiltros);
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        categoriaAtiva = chip.dataset.filtro ?? 'todos';
+        chips.forEach((c) => c.classList.toggle('active', c === chip));
+        aplicarFiltros();
+      });
+    });
+  </script>
+</Layout>
