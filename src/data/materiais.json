@@ -88,5 +88,25 @@
     "imagem": "/capas/semana-do-desinflame.png",
     "destaque": false,
     "tags": ["desinflame", "anti-inflamatório", "ritual matinal", "plano de 7 dias", "receitas", "low fodmap"]
+  },
+  {
+    "id": "equivalencia-proteica-com-caseina-a1",
+    "titulo": "Tabela de Equivalência Proteica: Versão Completa",
+    "descricao": "Substitua as opções abaixo mantendo a mesma quantidade de proteína: carnes, peixes, ovos, laticínios de búfala, ovelha e cabra, leite de vaca e derivados, e suplementos e whey protein indicados.",
+    "categoria": "Saúde intestinal",
+    "arquivo": "/materiais/tabela-equivalencia-proteica-com-caseina-a1.pdf",
+    "imagem": "/capas/tabela-equivalencia-proteica-com-caseina-a1.png",
+    "destaque": false,
+    "tags": ["proteína", "equivalência proteica", "whey protein", "laticínios", "substituição", "caseína a1"]
+  },
+  {
+    "id": "equivalencia-proteica-sem-caseina-a1",
+    "titulo": "Tabela de Equivalência Proteica: Sem Caseína A1",
+    "descricao": "Substitua as opções abaixo mantendo a mesma quantidade de proteína, sem glúten e sem caseína A1: carnes, peixes, ovos, laticínios de búfala, ovelha e cabra, e suplementos sem leite indicados.",
+    "categoria": "Saúde intestinal",
+    "arquivo": "/materiais/tabela-equivalencia-proteica-sem-caseina-a1.pdf",
+    "imagem": "/capas/tabela-equivalencia-proteica-sem-caseina-a1.png",
+    "destaque": false,
+    "tags": ["proteína", "equivalência proteica", "sem caseína a1", "sem glúten", "laticínios", "substituição"]
   }
 ]
