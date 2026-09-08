@@ -48,5 +48,45 @@
     "imagem": "",
     "destaque": false,
     "tags": ["ficha", "registro", "medidas", "circunferências", "peso", "acompanhamento"]
+  },
+  {
+    "id": "guia-low-fodmap",
+    "titulo": "Guia Low FODMAP: Alimentos Liberados",
+    "descricao": "Fase de eliminação do protocolo Low FODMAP: os legumes, raízes, frutas e temperos que você pode consumir com segurança para reduzir gases e distensão abdominal.",
+    "categoria": "Saúde intestinal",
+    "arquivo": "/materiais/guia-low-fodmap.pdf",
+    "imagem": "/capas/guia-low-fodmap.png",
+    "destaque": false,
+    "tags": ["low fodmap", "fase de eliminação", "gases", "distensão abdominal", "alimentos liberados"]
+  },
+  {
+    "id": "guia-low-fodmap-portugal",
+    "titulo": "Lista Low FODMAP: Referência para Portugal",
+    "descricao": "Frutas, legumes e temperos low FODMAP com opções fáceis de encontrar em supermercados e mercearias de Portugal, para o seu dia a dia.",
+    "categoria": "Saúde intestinal",
+    "arquivo": "/materiais/guia-low-fodmap-portugal.pdf",
+    "imagem": "/capas/guia-low-fodmap-portugal.png",
+    "destaque": false,
+    "tags": ["low fodmap", "portugal", "referência rápida", "frutas", "legumes"]
+  },
+  {
+    "id": "lista-reintroducao-alimentar",
+    "titulo": "Lista de Reintrodução Alimentar",
+    "descricao": "Passo a passo para reintroduzir aos poucos os alimentos com mais FODMAPs — frutas, legumes e leguminosas — testando um de cada vez e observando os sintomas.",
+    "categoria": "Saúde intestinal",
+    "arquivo": "/materiais/lista-reintroducao-alimentar.pdf",
+    "imagem": "/capas/lista-reintroducao-alimentar.png",
+    "destaque": false,
+    "tags": ["reintrodução", "low fodmap", "fodmap", "sintomas", "fase de transição", "estufamento", "gases", "distensão abdominal"]
+  },
+  {
+    "id": "semana-do-desinflame",
+    "titulo": "Semana do Desinflame",
+    "descricao": "Protocolo de 7 dias com rituais matinais (raspagem de língua, shot e supercoffee) e um plano dia a dia anti-inflamatório completo, com receitas inclusas.",
+    "categoria": "Hábitos e rotina",
+    "arquivo": "/materiais/semana-do-desinflame.pdf",
+    "imagem": "/capas/semana-do-desinflame.png",
+    "destaque": false,
+    "tags": ["desinflame", "anti-inflamatório", "ritual matinal", "plano de 7 dias", "receitas", "low fodmap"]
   }
 ]
