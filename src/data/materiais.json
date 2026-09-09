@@ -70,6 +70,16 @@
     "tags": ["low fodmap", "portugal", "referência rápida", "frutas", "legumes"]
   },
   {
+    "id": "guia-dieta-baixa-em-histamina",
+    "titulo": "Dieta Baixa em Histamina",
+    "descricao": "Controle de inflamação, alergias e histaminose: o que comer e o que evitar, e por que a histamina impacta diretamente o intestino, os hormônios e o bem-estar feminino.",
+    "categorias": ["Saúde intestinal"],
+    "arquivo": "/materiais/guia-dieta-baixa-em-histamina.pdf",
+    "imagem": "/capas/guia-dieta-baixa-em-histamina.png",
+    "destaque": false,
+    "tags": ["histamina", "histaminose", "dao", "inflamação", "alergias", "intestino"]
+  },
+  {
     "id": "equivalencia-proteica-com-caseina-a1",
     "titulo": "Tabela de Equivalência Proteica: Versão Completa",
     "descricao": "Substitua as opções abaixo mantendo a mesma quantidade de proteína: carnes, peixes, ovos, laticínios de búfala, ovelha e cabra, leite de vaca e derivados, e suplementos e whey protein indicados.",
