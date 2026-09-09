@@ -544,3 +544,7 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
   line-height:1.5;
   margin-bottom:0;
 }
+
+/* ---------- Subseção (ex: grupos de suplementos dentro de uma categoria) ---------- */
+.subsecao{ margin-top:32px; }
+.subsecao:first-of-type{ margin-top:20px; }

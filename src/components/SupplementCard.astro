@@ -19,8 +19,13 @@ interface Props {
 
 const { item, estrategico = false } = Astro.props;
 const gomaLabel = item.goma === 'a confirmar' ? 'Goma a confirmar' : item.goma;
+const buscaTexto = [item.nome, item.categoria, item.goma, item.observacao, estrategico ? 'estrategico' : '']
+  .join(' ')
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '');
 ---
-<div class="card product-card">
+<div class="card product-card" data-card data-categoria="Suplementação" data-busca={buscaTexto}>
   <div class="card-cover product-cover">
     {item.imagem
       ? <img src={item.imagem} alt={item.nome} loading="lazy" />

@@ -6,18 +6,19 @@ import CategoryFilters from '../components/CategoryFilters.astro';
 import MaterialCard from '../components/MaterialCard.astro';
 import VideoCard from '../components/VideoCard.astro';
 import VideoModal from '../components/VideoModal.astro';
-import CoverPlaceholder from '../components/CoverPlaceholder.astro';
+import SupplementCard from '../components/SupplementCard.astro';
 import Footer from '../components/Footer.astro';
 import materiais from '../data/materiais.json';
 import videos from '../data/videos.json';
+import suplementos from '../data/suplementos.json';
 
 const ORDEM_CATEGORIAS = [
   'Comece aqui',
   'Te auxilia no dia a dia',
+  'Suplementação',
   'Saúde intestinal',
   'Receitas',
   'Exames de precisão',
-  'Suplementação',
 ];
 
 const categoriasEncontradas = new Set<string>([
@@ -71,31 +72,22 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
       if (categoria === 'Suplementação') {
         return (
           <section class="section categoria-section" data-categoria-secao={categoria}>
-            <div class="section-title">
+            <div class="section-title stack">
               <span class="eyebrow">◇ {categoria}</span>
+              <h2>Suplementos e Produtos Recomendados</h2>
             </div>
-            <div class="grid">
-              <a
-                class="card"
-                href="/lista-de-suplementos-permitidos/"
-                data-card
-                data-categoria={categoria}
-                data-busca="lista de suplementos permitidos suplementos e produtos frequentemente utilizados na pratica clinica da dra. thais marten colageno whey proteina pre-treino suplementacao"
-              >
-                <div class="card-cover">
-                  <CoverPlaceholder categoria={categoria} />
+            {suplementos.map((grupo) => (
+              <div class="subsecao">
+                <div class="section-title">
+                  <span class="eyebrow">◇ {grupo.secao}</span>
                 </div>
-                <div class="card-body">
-                  <div class="card-categoria">{categoria}</div>
-                  <h3 class="card-titulo">Lista de Suplementos Permitidos</h3>
-                  <p class="card-descricao">
-                    Suplementos e produtos frequentemente utilizados na prática clínica da Dra. Thais
-                    Marten, organizados por categoria.
-                  </p>
-                  <span class="card-cta">Ver lista completa →</span>
+                <div class="grid">
+                  {grupo.itens.map((item) => (
+                    <SupplementCard item={item} estrategico={grupo.secao === 'Estratégicos'} />
+                  ))}
                 </div>
-              </a>
-            </div>
+              </div>
+            ))}
           </section>
         );
       }
