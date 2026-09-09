@@ -5,7 +5,7 @@ interface Material {
   id: string;
   titulo: string;
   descricao: string;
-  categoria: string;
+  categorias: string[];
   arquivo: string;
   imagem: string;
   destaque: boolean;
@@ -14,10 +14,11 @@ interface Material {
 
 interface Props {
   material: Material;
+  categoria: string;
 }
 
-const { material } = Astro.props;
-const buscaTexto = [material.titulo, material.descricao, material.categoria, ...material.tags]
+const { material, categoria } = Astro.props;
+const buscaTexto = [material.titulo, material.descricao, ...material.categorias, ...material.tags]
   .join(' ')
   .toLowerCase()
   .normalize('NFD')
@@ -29,17 +30,17 @@ const buscaTexto = [material.titulo, material.descricao, material.categoria, ...
   target="_blank"
   rel="noopener"
   data-card
-  data-categoria={material.categoria}
+  data-categoria={categoria}
   data-busca={buscaTexto}
 >
   <div class="card-cover">
     {material.imagem
       ? <img src={material.imagem} alt={material.titulo} loading="lazy" />
-      : <CoverPlaceholder categoria={material.categoria} />
+      : <CoverPlaceholder categoria={categoria} />
     }
   </div>
   <div class="card-body">
-    <div class="card-categoria">{material.categoria}</div>
+    <div class="card-categoria">{categoria}</div>
     <h3 class="card-titulo">{material.titulo}</h3>
     <p class="card-descricao">{material.descricao}</p>
     <span class="card-cta">Ver material →</span>

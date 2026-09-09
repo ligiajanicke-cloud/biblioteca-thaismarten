@@ -11,7 +11,26 @@ import Footer from '../components/Footer.astro';
 import materiais from '../data/materiais.json';
 import videos from '../data/videos.json';
 
-const categorias = [...new Set([...materiais.map((m) => m.categoria), ...videos.map((v) => v.categoria), 'Suplementação'])].sort();
+const ORDEM_CATEGORIAS = [
+  'Comece aqui',
+  'Te auxilia no dia a dia',
+  'Saúde intestinal',
+  'Receitas',
+  'Exames de precisão',
+  'Suplementação',
+];
+
+const categoriasEncontradas = new Set<string>([
+  ...materiais.flatMap((m) => m.categorias),
+  ...videos.flatMap((v) => v.categorias),
+  'Suplementação',
+]);
+
+const categorias = [
+  ...ORDEM_CATEGORIAS.filter((c) => categoriasEncontradas.has(c)),
+  ...[...categoriasEncontradas].filter((c) => !ORDEM_CATEGORIAS.includes(c)).sort(),
+];
+
 const destaques = materiais.filter((m) => m.destaque);
 const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a.destaque));
 ---
@@ -27,65 +46,77 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
           <span class="eyebrow">◇ Em destaque</span>
         </div>
         <div class="destaque-grid">
-          {destaques.map((material) => <MaterialCard material={material} />)}
+          {destaques.map((material) => <MaterialCard material={material} categoria={material.categorias[0]} />)}
         </div>
       </section>
     )}
 
-    <section class="section">
-      <div class="section-title">
-        <span class="eyebrow">◇ Biblioteca completa</span>
-      </div>
-      <div class="grid" id="grade-materiais">
-        {materiais.map((material) => <MaterialCard material={material} />)}
-      </div>
-      <p class="empty-state" id="estado-vazio" hidden>
-        Nenhum material encontrado com esses filtros.
-      </p>
-    </section>
+    {categorias.map((categoria) => {
+      if (categoria === 'Exames de precisão') {
+        const videosDaCategoria = videosOrdenados.filter((v) => v.categorias.includes(categoria));
+        if (videosDaCategoria.length === 0) return null;
+        return (
+          <section class="section categoria-section" data-categoria-secao={categoria}>
+            <div class="section-title stack">
+              <span class="eyebrow">◇ {categoria}</span>
+              <h2>Tutoriais para Coleta de Exames de Precisão</h2>
+            </div>
+            <div class="grid">
+              {videosDaCategoria.map((video) => <VideoCard video={video} categoria={categoria} />)}
+            </div>
+          </section>
+        );
+      }
 
-    <section class="section" id="secao-suplementos">
-      <div class="section-title">
-        <span class="eyebrow">◇ Suplementação</span>
-      </div>
-      <div class="grid">
-        <a
-          class="card"
-          href="/lista-de-suplementos-permitidos/"
-          data-card
-          data-categoria="Suplementação"
-          data-busca="lista de suplementos permitidos suplementos e produtos frequentemente utilizados na pratica clinica da dra. thais marten colageno whey proteina pre-treino suplementacao"
-        >
-          <div class="card-cover">
-            <CoverPlaceholder categoria="Suplementação" />
-          </div>
-          <div class="card-body">
-            <div class="card-categoria">Suplementação</div>
-            <h3 class="card-titulo">Lista de Suplementos Permitidos</h3>
-            <p class="card-descricao">
-              Suplementos e produtos frequentemente utilizados na prática clínica da Dra. Thais
-              Marten, organizados por categoria.
-            </p>
-            <span class="card-cta">Ver lista completa →</span>
-          </div>
-        </a>
-      </div>
-    </section>
+      if (categoria === 'Suplementação') {
+        return (
+          <section class="section categoria-section" data-categoria-secao={categoria}>
+            <div class="section-title">
+              <span class="eyebrow">◇ {categoria}</span>
+            </div>
+            <div class="grid">
+              <a
+                class="card"
+                href="/lista-de-suplementos-permitidos/"
+                data-card
+                data-categoria={categoria}
+                data-busca="lista de suplementos permitidos suplementos e produtos frequentemente utilizados na pratica clinica da dra. thais marten colageno whey proteina pre-treino suplementacao"
+              >
+                <div class="card-cover">
+                  <CoverPlaceholder categoria={categoria} />
+                </div>
+                <div class="card-body">
+                  <div class="card-categoria">{categoria}</div>
+                  <h3 class="card-titulo">Lista de Suplementos Permitidos</h3>
+                  <p class="card-descricao">
+                    Suplementos e produtos frequentemente utilizados na prática clínica da Dra. Thais
+                    Marten, organizados por categoria.
+                  </p>
+                  <span class="card-cta">Ver lista completa →</span>
+                </div>
+              </a>
+            </div>
+          </section>
+        );
+      }
 
-    {videosOrdenados.length > 0 && (
-      <section class="section">
-        <div class="section-title stack">
-          <span class="eyebrow">◇ Vídeos</span>
-          <h2>Tutoriais para Coleta de Exames de Precisão</h2>
-        </div>
-        <div class="grid" id="grade-videos">
-          {videosOrdenados.map((video) => <VideoCard video={video} />)}
-        </div>
-        <p class="empty-state" id="estado-vazio-videos" hidden>
-          Nenhum vídeo encontrado com esses filtros.
-        </p>
-      </section>
-    )}
+      const materiaisDaCategoria = materiais.filter((m) => m.categorias.includes(categoria));
+      if (materiaisDaCategoria.length === 0) return null;
+      return (
+        <section class="section categoria-section" data-categoria-secao={categoria}>
+          <div class="section-title">
+            <span class="eyebrow">◇ {categoria}</span>
+          </div>
+          <div class="grid">
+            {materiaisDaCategoria.map((material) => <MaterialCard material={material} categoria={categoria} />)}
+          </div>
+        </section>
+      );
+    })}
+
+    <p class="empty-state" id="estado-vazio-geral" hidden>
+      Nenhum material encontrado com esses filtros.
+    </p>
   </main>
 
   <Footer />
@@ -96,41 +127,40 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
     const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
     const cards = document.querySelectorAll<HTMLElement>('[data-card]');
     const destaquesSection = document.querySelector<HTMLElement>('#secao-destaques');
-    const suplementosSection = document.querySelector<HTMLElement>('#secao-suplementos');
+    const categoriaSections = document.querySelectorAll<HTMLElement>('.categoria-section');
+    const estadoVazioGeral = document.querySelector<HTMLElement>('#estado-vazio-geral');
 
-    let categoriaAtiva = 'todos';
+    let categoriaAtiva: string | null = null;
 
     function normalizar(texto: string) {
       return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    }
-
-    function atualizarEstadoVazio(gridSeletor: string, emptyId: string) {
-      const grid = document.querySelector<HTMLElement>(gridSeletor);
-      const empty = document.querySelector<HTMLElement>(emptyId);
-      if (!grid || !empty) return;
-      const visiveis = grid.querySelectorAll('[data-card]:not([hidden])').length;
-      empty.hidden = visiveis > 0;
     }
 
     function aplicarFiltros() {
       const termo = normalizar((input?.value ?? '').trim().toLowerCase());
 
       cards.forEach((card) => {
-        const categoriaOk = categoriaAtiva === 'todos' || card.dataset.categoria === categoriaAtiva;
         const buscaOk = termo === '' || (card.dataset.busca ?? '').includes(termo);
-        card.hidden = !(categoriaOk && buscaOk);
+        card.hidden = !buscaOk;
       });
 
-      atualizarEstadoVazio('#grade-materiais', '#estado-vazio');
-      atualizarEstadoVazio('#grade-videos', '#estado-vazio-videos');
+      let algumaSecaoVisivel = false;
+
+      categoriaSections.forEach((section) => {
+        const categoriaSecao = section.dataset.categoriaSecao ?? '';
+        const filtroOk = categoriaAtiva === null || categoriaAtiva === categoriaSecao;
+        const temVisivel = Array.from(section.querySelectorAll<HTMLElement>('[data-card]')).some(
+          (c) => !c.hidden
+        );
+        const mostrar = filtroOk && temVisivel;
+        section.hidden = !mostrar;
+        if (mostrar) algumaSecaoVisivel = true;
+      });
+
+      if (estadoVazioGeral) estadoVazioGeral.hidden = algumaSecaoVisivel;
 
       if (destaquesSection) {
-        destaquesSection.hidden = termo !== '' || categoriaAtiva !== 'todos';
-      }
-
-      if (suplementosSection) {
-        const cartaoSuplementos = suplementosSection.querySelector<HTMLElement>('[data-card]');
-        suplementosSection.hidden = cartaoSuplementos?.hidden ?? false;
+        destaquesSection.hidden = termo !== '' || categoriaAtiva !== null;
       }
     }
 
@@ -138,8 +168,9 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
 
     chips.forEach((chip) => {
       chip.addEventListener('click', () => {
-        categoriaAtiva = chip.dataset.filtro ?? 'todos';
-        chips.forEach((c) => c.classList.toggle('active', c === chip));
+        const alvo = chip.dataset.filtro ?? '';
+        categoriaAtiva = categoriaAtiva === alvo ? null : alvo;
+        chips.forEach((c) => c.classList.toggle('active', c.dataset.filtro === categoriaAtiva));
         aplicarFiltros();
       });
     });

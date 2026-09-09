@@ -3,7 +3,7 @@
     "id": "microbioma-intestinal",
     "titulo": "Como Coletar o Exame de Microbioma Intestinal",
     "descricao": "Passo a passo para fazer corretamente a coleta da amostra do exame de microbioma intestinal em casa, sem comprometer o resultado.",
-    "categoria": "Saúde intestinal",
+    "categorias": ["Exames de precisão"],
     "youtubeUrl": "https://youtu.be/yzIRrvpOkEc",
     "destaque": true,
     "tags": ["microbioma intestinal", "coleta de exame", "tutorial", "exame de fezes"]
@@ -12,7 +12,7 @@
     "id": "microbioma-feminino",
     "titulo": "Como Coletar o Exame de Microbioma Feminino",
     "descricao": "Orientações práticas para a coleta correta da amostra do exame de microbioma feminino, seguindo o passo a passo indicado pelo laboratório.",
-    "categoria": "Exames",
+    "categorias": ["Exames de precisão"],
     "youtubeUrl": "https://youtu.be/40YAiVr-EGg",
     "destaque": false,
     "tags": ["microbioma feminino", "saúde da mulher", "coleta de exame", "tutorial"]
@@ -21,7 +21,7 @@
     "id": "hipersensibilidade-alimentar",
     "titulo": "Como Coletar o Exame de Hipersensibilidade Alimentar",
     "descricao": "Veja como fazer corretamente a coleta do exame de hipersensibilidade alimentar, usado para identificar alimentos que podem estar gerando inflamação.",
-    "categoria": "Exames",
+    "categorias": ["Exames de precisão"],
     "youtubeUrl": "https://youtu.be/tVg3HevYb5o",
     "destaque": false,
     "tags": ["hipersensibilidade alimentar", "intolerância alimentar", "coleta de exame", "tutorial", "inflamação"]
@@ -30,7 +30,7 @@
     "id": "testes-metabolicos",
     "titulo": "Como Coletar os Testes Metabólicos",
     "descricao": "Passo a passo para a coleta correta dos testes metabólicos, usados para avaliar com mais precisão o funcionamento do seu metabolismo.",
-    "categoria": "Exames",
+    "categorias": ["Exames de precisão"],
     "youtubeUrl": "https://youtu.be/wTz8R05Wru4",
     "destaque": false,
     "tags": ["testes metabólicos", "metabolismo", "coleta de exame", "tutorial"]
@@ -39,7 +39,7 @@
     "id": "doencas-inflamatorias",
     "titulo": "Como Coletar o Exame de Doenças Inflamatórias",
     "descricao": "Orientações para a coleta correta do exame de doenças inflamatórias, importante para identificar processos inflamatórios no organismo.",
-    "categoria": "Exames",
+    "categorias": ["Exames de precisão"],
     "youtubeUrl": "https://youtu.be/YiHwjebuPmM",
     "destaque": false,
     "tags": ["doenças inflamatórias", "inflamação", "coleta de exame", "tutorial"]
@@ -48,7 +48,7 @@
     "id": "biomarcadores-envelhecimento",
     "titulo": "Como Coletar o Exame de Biomarcadores do Envelhecimento",
     "descricao": "Passo a passo para a coleta do exame de biomarcadores do envelhecimento, que avalia indicadores relacionados ao seu envelhecimento biológico.",
-    "categoria": "Exames",
+    "categorias": ["Exames de precisão"],
     "youtubeUrl": "https://youtu.be/L1oKqSC32Hc",
     "destaque": false,
     "tags": ["biomarcadores", "envelhecimento", "longevidade", "coleta de exame", "tutorial"]
@@ -57,7 +57,7 @@
     "id": "analises-geneticas",
     "titulo": "Como Coletar o Exame de Análises Genéticas",
     "descricao": "Passo a passo para a coleta correta do exame de análises genéticas, usado para personalizar ainda mais a sua estratégia nutricional.",
-    "categoria": "Exames",
+    "categorias": ["Exames de precisão"],
     "youtubeUrl": "https://youtu.be/XVMDLigFclc",
     "destaque": false,
     "tags": ["análises genéticas", "nutrigenética", "coleta de exame", "tutorial"]
@@ -66,7 +66,7 @@
     "id": "duo-saude-intestinal",
     "titulo": "Como Coletar o Exame Duo Saúde Intestinal",
     "descricao": "Orientações para a coleta correta do exame Duo Saúde Intestinal, que avalia em conjunto diferentes aspectos da sua saúde digestiva.",
-    "categoria": "Saúde intestinal",
+    "categorias": ["Exames de precisão"],
     "youtubeUrl": "https://youtu.be/Ev-U0cidD2A",
     "destaque": true,
     "tags": ["duo saúde intestinal", "saúde intestinal", "coleta de exame", "tutorial"]

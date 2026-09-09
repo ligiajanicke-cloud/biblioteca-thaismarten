@@ -5,7 +5,7 @@ interface Video {
   id: string;
   titulo: string;
   descricao: string;
-  categoria: string;
+  categorias: string[];
   youtubeUrl: string;
   destaque: boolean;
   tags: string[];
@@ -13,12 +13,13 @@ interface Video {
 
 interface Props {
   video: Video;
+  categoria: string;
 }
 
-const { video } = Astro.props;
+const { video, categoria } = Astro.props;
 const ytId = getYouTubeId(video.youtubeUrl);
 const thumb = getYouTubeThumbnail(video.youtubeUrl);
-const buscaTexto = [video.titulo, video.descricao, video.categoria, ...video.tags]
+const buscaTexto = [video.titulo, video.descricao, ...video.categorias, ...video.tags]
   .join(' ')
   .toLowerCase()
   .normalize('NFD')
@@ -28,7 +29,7 @@ const buscaTexto = [video.titulo, video.descricao, video.categoria, ...video.tag
   type="button"
   class:list={['card', 'video-card', { destaque: video.destaque }]}
   data-card
-  data-categoria={video.categoria}
+  data-categoria={categoria}
   data-busca={buscaTexto}
   data-video-id={ytId}
   data-video-title={video.titulo}
@@ -40,7 +41,7 @@ const buscaTexto = [video.titulo, video.descricao, video.categoria, ...video.tag
     </span>
   </div>
   <div class="card-body">
-    <div class="card-categoria">{video.categoria}</div>
+    <div class="card-categoria">{categoria}</div>
     <h3 class="card-titulo">{video.titulo}</h3>
     <p class="card-descricao">{video.descricao}</p>
     <span class="card-cta">Assistir ▶</span>

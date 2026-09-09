@@ -47,6 +47,27 @@ npm run build     # gera a versão estática em dist/
 npm run preview   # serve a versão de produção localmente
 ```
 
+### Estrutura de categorias e exibição
+
+A partir desta reorganização, a home não tem mais uma aba "Todos": ela abre
+mostrando **uma seção por categoria**, cada uma com sua própria grade de
+cards — os filtros no topo funcionam como um "isolar categoria" (clicar
+mostra só aquela seção; clicar de novo no mesmo chip volta a mostrar todas).
+A ordem das categorias é fixa para as já conhecidas (`ORDEM_CATEGORIAS` em
+`src/pages/index.astro`: Comece aqui, Te auxilia no dia a dia, Saúde
+intestinal, Receitas, Exames de precisão, Suplementação) e qualquer
+categoria nova que apareça nos dados é adicionada ao final, em ordem
+alfabética — sem precisar editar essa lista manualmente na maioria dos
+casos.
+
+Tanto `materiais.json` quanto `videos.json` usam `"categorias": [...]`
+(array, não mais uma `categoria` única) — assim um mesmo material pode
+pertencer a mais de uma seção **sem duplicar o arquivo físico**: ele só
+aparece uma vez em cada categoria listada, renderizado como um card por
+seção. Exemplo real do projeto: o Guia Low FODMAP tem
+`"categorias": ["Saúde intestinal", "Te auxilia no dia a dia"]` e aparece
+nas duas.
+
 ### Como adicionar um novo material
 
 Não é necessário editar componentes ou páginas — apenas:
@@ -55,14 +76,17 @@ Não é necessário editar componentes ou páginas — apenas:
 2. (Opcional) Coloque uma capa própria em `public/capas/`. Se não houver
    capa, o site gera automaticamente um placeholder elegante na identidade
    da marca (moldura dourada, ornamento ◇, nome da categoria) — nunca uma
-   imagem genérica de nutrição.
+   imagem genérica de nutrição. Quando o material não tiver uma capa de
+   marca própria (ex: fichas de preenchimento), pode-se usar a própria
+   primeira página do PDF como capa (renderizada via `pdftoppm`, mesma
+   técnica usada nos outros materiais).
 3. Adicione uma entrada em `src/data/materiais.json`:
    ```json
    {
      "id": "identificador-unico",
      "titulo": "Título do material",
      "descricao": "Descrição curta e real do conteúdo.",
-     "categoria": "Uma das categorias (ou uma nova — os filtros são gerados a partir dos dados)",
+     "categorias": ["Uma ou mais categorias existentes, ou uma nova"],
      "arquivo": "/materiais/nome-do-arquivo.pdf",
      "imagem": "/capas/nome-da-capa.jpg",
      "destaque": false,
@@ -71,8 +95,8 @@ Não é necessário editar componentes ou páginas — apenas:
    ```
    Deixe `"imagem": ""` para usar o placeholder automático.
 
-A busca (título, descrição, categoria, tags) e os filtros de categoria são
-100% client-side e instantâneos — nenhuma dependência além do Astro.
+A busca (título, descrição, categorias, tags) é 100% client-side e
+instantânea — nenhuma dependência além do Astro.
 
 Materiais com dados individuais de pacientes (planos nominais, exames
 pessoais) **não devem** entrar nesta biblioteca — ela é só para conteúdo
@@ -80,28 +104,32 @@ educativo genérico.
 
 ### Como adicionar um novo vídeo
 
-O vídeo precisa já estar público no YouTube. Só é preciso:
+O vídeo precisa já estar público no YouTube. Só é preciso adicionar uma
+entrada em `src/data/videos.json`:
+```json
+{
+  "id": "identificador-unico",
+  "titulo": "Título do vídeo",
+  "descricao": "Descrição curta e real do conteúdo.",
+  "categorias": ["Exames de precisão"],
+  "youtubeUrl": "https://youtu.be/XXXXXXXXXXX",
+  "destaque": false,
+  "tags": ["tag1", "tag2"]
+}
+```
 
-1. Adicionar uma entrada em `src/data/videos.json`:
-   ```json
-   {
-     "id": "identificador-unico",
-     "titulo": "Título do vídeo",
-     "descricao": "Descrição curta e real do conteúdo.",
-     "categoria": "Uma das categorias já existentes (ou uma nova)",
-     "youtubeUrl": "https://youtu.be/XXXXXXXXXXX",
-     "destaque": false,
-     "tags": ["tag1", "tag2"]
-   }
-   ```
+Por decisão de produto, todo vídeo de coleta de exame deve usar
+`"categorias": ["Exames de precisão"]` — essa é a única seção onde tutoriais
+em vídeo aparecem na home (o título da seção, "Tutoriais para Coleta de
+Exames de Precisão", fica fixo em `index.astro`, independente do nome da
+categoria/chip).
 
 A thumbnail é obtida automaticamente do YouTube (`img.youtube.com`) a partir do
 `youtubeUrl` — não precisa subir imagem nenhuma. O player só carrega quando o
 paciente clica no card (thumbnail + selo de play até lá), para a página não
 ficar pesada com vários vídeos incorporados de uma vez; o vídeo abre num modal
 dentro da própria biblioteca e é removido do DOM ao fechar (o que também para
-a reprodução). A busca e os filtros de categoria enxergam vídeos e documentos
-juntos, pela mesma lógica.
+a reprodução). A busca enxerga vídeos e documentos juntos, pela mesma lógica.
 
 ### Lista de Suplementos Permitidos
 
