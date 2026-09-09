@@ -1,22 +1,23 @@
 [
   {
-    "secao": "Colágenos com Sabor",
-    "itens": [
-      { "id": "collagen-essential-tangerina", "nome": "Collagen Essential Protein – Tangerina", "categoria": "colágeno", "proteinaPorDose": "14 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "/produtos/collagen-essential-tangerina.webp" },
-      { "id": "collagen-essential-frutas-tropicais", "nome": "Collagen Essential Protein – Frutas Tropicais", "categoria": "colágeno", "proteinaPorDose": "14 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "/produtos/collagen-essential-frutas-tropicais.webp" },
-      { "id": "collagen-essential-cacau", "nome": "Collagen Essential Protein – Cacau", "categoria": "colágeno", "proteinaPorDose": "14 g", "goma": "com goma", "cupom": "", "observacao": "", "imagem": "/produtos/collagen-essential-cacau.webp" },
-      { "id": "body-protein-equaliv-saborizado", "nome": "Body Protein Equaliv – Saborizado", "categoria": "colágeno", "proteinaPorDose": "14 g", "goma": "com goma", "cupom": "", "observacao": "", "imagem": "/produtos/body-protein-equaliv.webp" },
-      { "id": "collagen-bones-essential", "nome": "Collagen Bones Essential", "categoria": "colágeno", "proteinaPorDose": "9,1 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "/produtos/collagen-bones-essential.webp" },
-      { "id": "true-collagen-protein", "nome": "True Collagen Protein", "categoria": "colágeno", "proteinaPorDose": "20 g", "goma": "com goma", "cupom": "", "observacao": "", "imagem": "/produtos/true-collagen-protein.webp" }
-    ]
-  },
-  {
     "secao": "Colágenos Neutros (Sem Goma)",
     "itens": [
       { "id": "collagen-essential-neutro", "nome": "Collagen Essential Protein – Neutro", "categoria": "colágeno neutro", "proteinaPorDose": "14 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "/produtos/collagen-essential-neutro.webp" },
       { "id": "body-protein-equaliv-neutro", "nome": "Body Protein Equaliv – Neutro", "categoria": "colágeno neutro", "proteinaPorDose": "13,5 g", "goma": "sem goma", "cupom": "", "observacao": "Rótulo oficial: 13,5 g por dose (1 scoop de 15 g) ou 27 g em dose dupla (2 scoops).", "imagem": "/produtos/body-protein-equaliv.webp" },
       { "id": "puravida-colageno-neutro", "nome": "Puravida – Colágeno Neutro", "categoria": "colágeno neutro", "proteinaPorDose": "21 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "/produtos/puravida-colageno-neutro.webp" },
       { "id": "selvs-collagen-neutro", "nome": "Selvs Collagen Protein – Neutro", "categoria": "colágeno neutro", "proteinaPorDose": "20 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "/produtos/selvs-collagen-neutro.webp" }
+    ]
+  },
+  {
+    "secao": "Colágenos com Sabor",
+    "itens": [
+      { "id": "collagen-essential-tangerina", "nome": "Collagen Essential Protein – Tangerina", "categoria": "colágeno", "proteinaPorDose": "14 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "/produtos/collagen-essential-tangerina.webp" },
+      { "id": "collagen-essential-frutas-tropicais", "nome": "Collagen Essential Protein – Frutas Tropicais", "categoria": "colágeno", "proteinaPorDose": "14 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "/produtos/collagen-essential-frutas-tropicais.webp" },
+      { "id": "collagen-essential-cacau", "nome": "Collagen Essential Protein – Cacau", "categoria": "colágeno", "proteinaPorDose": "14 g", "goma": "com goma", "cupom": "", "observacao": "", "imagem": "/produtos/collagen-essential-cacau.webp" },
+      { "id": "body-protein-equaliv-saborizado", "nome": "Body Protein Equaliv – Saborizado", "categoria": "colágeno", "proteinaPorDose": "14 g", "goma": "com goma", "cupom": "", "observacao": "", "imagem": "/produtos/body-protein-equaliv-saborizado.webp" },
+      { "id": "body-protein-equaliv-fresh", "nome": "Body Protein Equaliv – Fresh", "categoria": "colágeno", "proteinaPorDose": "14 g", "goma": "com goma", "cupom": "", "observacao": "", "imagem": "/produtos/body-protein-equaliv-fresh.jpeg" },
+      { "id": "collagen-bones-essential", "nome": "Collagen Bones Essential", "categoria": "colágeno", "proteinaPorDose": "9,1 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "/produtos/collagen-bones-essential.webp" },
+      { "id": "true-collagen-protein", "nome": "True Collagen Protein", "categoria": "colágeno", "proteinaPorDose": "20 g", "goma": "com goma", "cupom": "", "observacao": "", "imagem": "/produtos/true-collagen-protein.webp" }
     ]
   },
   {
