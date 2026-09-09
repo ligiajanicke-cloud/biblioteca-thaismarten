@@ -21,11 +21,14 @@ templates/
   pagina-interna.html  Template de página interna com todos os componentes disponíveis
 
 src/                   Site "Biblioteca do Paciente" (Astro)
-  data/materiais.json  Fonte única dos materiais (PDFs) exibidos no site
-  data/videos.json     Fonte única dos vídeos (tutoriais do YouTube)
+  data/materiais.json     Fonte única dos materiais (PDFs) exibidos no site
+  data/videos.json        Fonte única dos vídeos (tutoriais do YouTube)
+  data/suplementos.json   Fonte única da Lista de Suplementos Permitidos
   components/          Header, busca, filtros, card de material, card de vídeo,
-                       modal de vídeo, capa-placeholder, rodapé
-  pages/index.astro    Página única da biblioteca
+                       card de produto, modal de vídeo, capa-placeholder,
+                       placeholder de produto, rodapé
+  pages/index.astro    Página principal da biblioteca
+  pages/lista-de-suplementos-permitidos.astro  Página de suplementos
   styles/global.css    Paleta e tipografia do site (mesmos tokens da identidade)
   utils/youtube.ts     Extrai o ID do vídeo e monta a URL da thumbnail
 public/
@@ -99,6 +102,31 @@ ficar pesada com vários vídeos incorporados de uma vez; o vídeo abre num moda
 dentro da própria biblioteca e é removido do DOM ao fechar (o que também para
 a reprodução). A busca e os filtros de categoria enxergam vídeos e documentos
 juntos, pela mesma lógica.
+
+### Lista de Suplementos Permitidos
+
+Página própria em `/lista-de-suplementos-permitidos/`, com um card de entrada
+na home (categoria "Suplementação"). Os produtos ficam em
+`src/data/suplementos.json`, agrupados por seção (cada objeto do array é uma
+seção com `secao` e `itens`). Para adicionar um produto nessa lista, edite o
+JSON — não é preciso tocar em componentes:
+```json
+{
+  "id": "identificador-unico",
+  "nome": "Nome do produto",
+  "categoria": "colágeno | colágeno neutro | whey | beef protein | proteína | pré-treino | ...",
+  "proteinaPorDose": "14 g",
+  "goma": "com goma | sem goma | a confirmar | \"\"",
+  "cupom": "CODIGO ou \"\"",
+  "observacao": "Nota curta, ex: divergência entre sabores, ou \"\"",
+  "imagem": "/produtos/nome-da-imagem.jpg ou \"\""
+}
+```
+Deixe `imagem` vazio para usar o placeholder da marca (moldura dourada,
+ornamento ◇, categoria, "Foto em breve"). Produtos da seção "Estratégicos"
+não mostram `proteinaPorDose` mesmo se o campo vier preenchido — a página
+ignora esse campo para essa seção por regra de negócio (produtos que não são
+fonte de proteína).
 
 ## Como criar um novo documento
 

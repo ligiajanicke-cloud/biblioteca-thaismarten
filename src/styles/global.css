@@ -451,3 +451,96 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
   .video-modal-panel{ padding:20px 20px 22px; }
   .video-modal-close{ top:12px; right:12px; }
 }
+
+/* ---------- Link de retorno (páginas internas) ---------- */
+.voltar-link{
+  display:inline-block;
+  margin-top:18px;
+  font-family:'Poppins', Arial, sans-serif;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+}
+.voltar-link:hover{ color:var(--brown); }
+
+/* ---------- Nota de rodapé de página (ex: aviso de material de apoio) ---------- */
+.page-note{
+  text-align:center;
+  font-family:'Lora', Georgia, serif;
+  font-style:italic;
+  font-size:12.5px;
+  color:var(--muted);
+  margin-top:40px;
+  padding-top:20px;
+  border-top:1px solid var(--panel-line);
+}
+
+/* ---------- Tag pill genérica (goma, categoria extra) ---------- */
+.tag{
+  display:inline-flex;
+  align-items:center;
+  font-family:'Poppins', Arial, sans-serif;
+  font-size:8.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--brown-2);
+  background:#fff;
+  border:1px solid var(--gold-soft);
+  border-radius:var(--radius-pill);
+  padding:4px 10px;
+  white-space:nowrap;
+}
+.card-categoria .tag-estrategico{
+  margin-left:8px;
+  font-size:8px;
+  padding:3px 8px;
+  vertical-align:middle;
+}
+
+/* ---------- Card de produto (lista de suplementos) ---------- */
+.product-card{ cursor:default; }
+.product-card:hover{
+  transform:none;
+  box-shadow:none;
+  border-color:var(--panel-line);
+}
+.product-cover{ aspect-ratio:1/1; }
+.product-cover img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:14px;
+  background:#fff;
+}
+.product-specs{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:10px;
+}
+.spec-proteina{
+  font-family:'Poppins', Arial, sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.03em;
+  color:var(--brown);
+}
+.product-cupom{
+  font-family:'Poppins', Arial, sans-serif;
+  font-size:9.5px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  margin-bottom:8px;
+}
+.product-cupom strong{ color:var(--brown); }
+.product-obs{
+  font-family:'Lora', Georgia, serif;
+  font-style:italic;
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.5;
+  margin-bottom:0;
+}

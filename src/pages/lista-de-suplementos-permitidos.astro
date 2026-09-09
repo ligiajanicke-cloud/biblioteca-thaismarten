@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import SupplementCard from '../components/SupplementCard.astro';
+import suplementos from '../data/suplementos.json';
+---
+<Layout
+  title="Lista de Suplementos Permitidos · Dra. Thais Marten"
+  description="Suplementos e produtos frequentemente utilizados na prática clínica da Dra. Thais Marten."
+>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brandmark">
+        <span class="dia">◇</span>
+        <span>DRA. THAIS <b>MARTEN</b></span>
+        <span class="dia">◇</span>
+      </div>
+      <h1>Lista de Suplementos Permitidos</h1>
+      <p class="subtitulo">
+        Selecionamos aqui algumas opções de suplementos e produtos frequentemente utilizados em
+        nossa prática clínica. A escolha ideal depende do seu caso, da sua tolerância individual e
+        da sua orientação profissional.
+      </p>
+      <a class="voltar-link" href="/">← Voltar para a Biblioteca do Paciente</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    {suplementos.map((grupo) => (
+      <section class="section">
+        <div class="section-title stack">
+          <span class="eyebrow">◇ Suplementos</span>
+          <h2>{grupo.secao}</h2>
+        </div>
+        <div class="grid">
+          {grupo.itens.map((item) => (
+            <SupplementCard item={item} estrategico={grupo.secao === 'Estratégicos'} />
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <p class="page-note">
+      Material de apoio. A escolha do suplemento deve respeitar a orientação individualizada.
+    </p>
+  </main>
+
+  <Footer />
+</Layout>

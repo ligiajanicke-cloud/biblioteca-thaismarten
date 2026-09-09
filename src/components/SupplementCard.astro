@@ -1,0 +1,50 @@
+---
+import ProductPlaceholder from './ProductPlaceholder.astro';
+
+interface Item {
+  id: string;
+  nome: string;
+  categoria: string;
+  proteinaPorDose: string;
+  goma: string;
+  cupom: string;
+  observacao: string;
+  imagem: string;
+}
+
+interface Props {
+  item: Item;
+  estrategico?: boolean;
+}
+
+const { item, estrategico = false } = Astro.props;
+const gomaLabel = item.goma === 'a confirmar' ? 'Goma a confirmar' : item.goma;
+---
+<div class="card product-card">
+  <div class="card-cover product-cover">
+    {item.imagem
+      ? <img src={item.imagem} alt={item.nome} loading="lazy" />
+      : <ProductPlaceholder categoria={item.categoria} />
+    }
+  </div>
+  <div class="card-body">
+    <div class="card-categoria">
+      {item.categoria}
+      {estrategico && <span class="tag tag-estrategico">Estratégico</span>}
+    </div>
+    <h3 class="card-titulo product-titulo">{item.nome}</h3>
+
+    {(item.proteinaPorDose || gomaLabel) && (
+      <div class="product-specs">
+        {item.proteinaPorDose && <span class="spec-proteina">{item.proteinaPorDose} de proteína</span>}
+        {gomaLabel && <span class="tag">{gomaLabel}</span>}
+      </div>
+    )}
+
+    {item.cupom && (
+      <p class="product-cupom">Cupom <strong>{item.cupom}</strong></p>
+    )}
+
+    {item.observacao && <p class="product-obs">{item.observacao}</p>}
+  </div>
+</div>
