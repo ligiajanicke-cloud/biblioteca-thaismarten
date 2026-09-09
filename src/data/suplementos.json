@@ -14,7 +14,7 @@
     "secao": "Colágenos Neutros (Sem Goma)",
     "itens": [
       { "id": "collagen-essential-neutro", "nome": "Collagen Essential Protein – Neutro", "categoria": "colágeno neutro", "proteinaPorDose": "14 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "" },
-      { "id": "body-protein-equaliv-neutro", "nome": "Body Protein Equaliv – Neutro", "categoria": "colágeno neutro", "proteinaPorDose": "14 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "" },
+      { "id": "body-protein-equaliv-neutro", "nome": "Body Protein Equaliv – Neutro", "categoria": "colágeno neutro", "proteinaPorDose": "13,5 g", "goma": "sem goma", "cupom": "", "observacao": "Rótulo oficial: 13,5 g por dose (1 scoop de 15 g) ou 27 g em dose dupla (2 scoops).", "imagem": "" },
       { "id": "puravida-colageno-neutro", "nome": "Puravida – Colágeno Neutro", "categoria": "colágeno neutro", "proteinaPorDose": "21 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "" },
       { "id": "selvs-collagen-neutro", "nome": "Selvs Collagen Protein – Neutro", "categoria": "colágeno neutro", "proteinaPorDose": "20 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "" }
     ]
@@ -22,8 +22,8 @@
   {
     "secao": "Para Pacientes que Moram Fora do Brasil",
     "itens": [
-      { "id": "vital-proteins-collagen-vital", "nome": "Vital Proteins / Collagen Vital", "categoria": "colágeno internacional", "proteinaPorDose": "18 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "" },
-      { "id": "garden-of-life-grass-fed-collagen", "nome": "Garden of Life – Grass Fed Collagen Peptides", "categoria": "colágeno internacional", "proteinaPorDose": "18 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "" }
+      { "id": "vital-proteins-collagen-vital", "nome": "Vital Proteins / Collagen Vital", "categoria": "colágeno internacional", "proteinaPorDose": "20 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "" },
+      { "id": "garden-of-life-grass-fed-collagen", "nome": "Garden of Life – Grass Fed Collagen Peptides", "categoria": "colágeno internacional", "proteinaPorDose": "20 g", "goma": "sem goma", "cupom": "", "observacao": "", "imagem": "" }
     ]
   },
   {
