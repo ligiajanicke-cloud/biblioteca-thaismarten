@@ -5,8 +5,10 @@ interface Props {
 
 const { categorias } = Astro.props;
 ---
-<nav class="filters" aria-label="Filtrar por categoria">
-  {categorias.map((categoria) => (
-    <button class="filter-chip" type="button" data-filtro={categoria}>{categoria}</button>
-  ))}
-</nav>
+<div class="wrap">
+  <nav class="filters" aria-label="Filtrar por categoria">
+    {categorias.map((categoria) => (
+      <button class="filter-chip" type="button" data-filtro={categoria}>{categoria}</button>
+    ))}
+  </nav>
+</div>

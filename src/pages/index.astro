@@ -35,7 +35,7 @@ const categorias = [
 const destaques = materiais.filter((m) => m.destaque);
 const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a.destaque));
 ---
-<Layout title="Biblioteca do Paciente · Dra. Thais Marten">
+<Layout title="Biblioteca do Paciente | Dra. Thais Marten">
   <Header />
   <SearchBar />
   <CategoryFilters categorias={categorias} />
