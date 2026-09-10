@@ -11,6 +11,7 @@ import Footer from '../components/Footer.astro';
 import materiais from '../data/materiais.json';
 import videos from '../data/videos.json';
 import suplementos from '../data/suplementos.json';
+import higieneSono from '../data/higiene-sono.json';
 
 const ORDEM_CATEGORIAS = [
   'Comece aqui',
@@ -19,12 +20,14 @@ const ORDEM_CATEGORIAS = [
   'Saúde intestinal',
   'Receitas',
   'Exames de precisão',
+  'Higiene do sono',
 ];
 
 const categoriasEncontradas = new Set<string>([
   ...materiais.flatMap((m) => m.categorias),
   ...videos.flatMap((v) => v.categorias),
   'Suplementação',
+  'Higiene do sono',
 ]);
 
 const categorias = [
@@ -88,6 +91,25 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
                 </div>
               </div>
             ))}
+          </section>
+        );
+      }
+
+      if (categoria === 'Higiene do sono') {
+        return (
+          <section class="section categoria-section" data-categoria-secao={categoria}>
+            <div class="section-title stack">
+              <span class="eyebrow">◇ {categoria}</span>
+              <h2>Higiene do Sono</h2>
+            </div>
+            <p class="page-note-inline">
+              Recursos que podem auxiliar na construção de uma rotina noturna mais adequada. A indicação e o uso devem respeitar a estratégia individual de cada paciente.
+            </p>
+            <div class="grid">
+              {higieneSono.map((item) => (
+                <SupplementCard item={item} categoria={categoria} />
+              ))}
+            </div>
           </section>
         );
       }

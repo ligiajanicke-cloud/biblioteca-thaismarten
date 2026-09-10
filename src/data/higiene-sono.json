@@ -1,0 +1,6 @@
+[
+  { "id": "apx-oculos-bloqueadores-luz", "nome": "APX – Óculos Bloqueadores de Luz", "categoria": "óculos bloqueador de luz", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/oculos-apx.webp", "productUrl": "https://apx.com.br/collections/oculos", "buttonLabel": "Comprar" },
+  { "id": "phytoterapica-oleo-lavanda", "nome": "Phytoterápica – Óleo Essencial de Lavanda Francesa", "categoria": "óleo essencial", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/oleo-lavanda-phytoterapica.png", "productUrl": "https://loja.phytoterapica.com.br/oleo-essencial-de-lavanda-10ml/p", "buttonLabel": "Comprar" },
+  { "id": "true-source-magnesio-inositol", "nome": "True Source – Magnésio + Inositol", "categoria": "magnésio + inositol", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/magnesio-inositol-true.webp", "productUrl": "https://vivatrue.com.br/collections/magnesio-inositol", "buttonLabel": "Comprar" },
+  { "id": "oura-ring-anel-inteligente", "nome": "Oura Ring – Anel Inteligente", "categoria": "wearable de sono", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/oura-ring.jpg", "productUrl": "https://ouraring.com/store", "buttonLabel": "Comprar" }
+]
