@@ -1,0 +1,75 @@
+[
+  {
+    "secao": "Snacks e Bebidas Funcionais",
+    "itens": [
+      { "id": "glulac-biscoitos-sem-gluten", "nome": "Glulac – Biscoitos Sem Glúten", "categoria": "biscoito sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/biscoito-glulac.webp", "productUrl": "https://www.glulac.com.br/produtos", "buttonLabel": "Comprar" },
+      { "id": "sede-energy-bebida-funcional", "nome": "SEDE Energy – Bebida Funcional", "categoria": "bebida funcional", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/bebida-sede.webp", "productUrl": "https://sintasede.com.br/", "buttonLabel": "Comprar" }
+    ]
+  },
+  {
+    "secao": "Massas Sem Glúten",
+    "itens": [
+      { "id": "casarao-massa-arroz", "nome": "Casarão – Massa de Arroz Sem Glúten", "categoria": "massa sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/macarrao-casarao.webp", "productUrl": "https://casaraosemgluten.com.br/", "buttonLabel": "Comprar" },
+      { "id": "urbano-macarrao-arroz", "nome": "Urbano – Macarrão de Arroz Sem Glúten", "categoria": "massa sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/macarrao-urbano.webp", "productUrl": "https://www.amazon.com.br/dp/B07XSMV4MS", "buttonLabel": "Comprar" },
+      { "id": "konjac-massa-mf", "nome": "Konjac Massa MF", "categoria": "massa sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/massa-konjac.webp", "productUrl": "https://konjacmassamf.com.br/", "buttonLabel": "Comprar" }
+    ]
+  },
+  {
+    "secao": "Pães Sem Glúten",
+    "itens": [
+      { "id": "padoca-do-bem-paes", "nome": "Padoca do Bem – Pães Sem Glúten", "categoria": "pão sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "São Paulo", "imagem": "/produtos/pao-padoca-do-bem.jpg", "productUrl": "https://www.padocadobem.com/", "buttonLabel": "Comprar" },
+      { "id": "a-fornada-paes", "nome": "A Fornada – Pães Sem Glúten", "categoria": "pão sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "São Paulo", "imagem": "/produtos/pao-a-fornada.webp", "productUrl": "https://afornadapadaria.com.br/", "buttonLabel": "Comprar" },
+      { "id": "myfit-paes-pelotas", "nome": "MyFit – Pães Sem Glúten", "categoria": "pão sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "Pelotas/RS", "imagem": "/produtos/pao-myfit-pelotas.jpeg", "productUrl": "https://wa.me/18087212592?text=Ol%C3%A1!%20Vim%20pela%20Biblioteca%20da%20Dra.%20Thais%20Marten%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20p%C3%A3es%20sem%20gl%C3%BAten.", "buttonLabel": "Pedir pelo WhatsApp" }
+    ]
+  },
+  {
+    "secao": "Chocolates e Cacau",
+    "itens": [
+      { "id": "chocolate-organico-native", "nome": "Chocolate Orgânico Native", "categoria": "chocolate", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/chocolate-native.png", "productUrl": "https://www.nativeorganicos.com.br/chocolate", "buttonLabel": "Comprar" },
+      { "id": "only4-chocolate-70", "nome": "Only4 – Chocolate 70% Cacau", "categoria": "chocolate", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/chocolate-only4.webp", "productUrl": "https://www.instagram.com/only4oficial/", "buttonLabel": "Comprar" },
+      { "id": "qualicau-cacau-em-po", "nome": "QualiCau – Cacau em Pó 100% Cacau", "categoria": "cacau em pó", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/cacau-qualicau.webp", "productUrl": "https://www.lojaqualicoco.com.br/cacau-em-po-100-cacau-qualicau-200g", "buttonLabel": "Comprar" }
+    ]
+  },
+  {
+    "secao": "Bebidas Vegetais e Cremes Culinários",
+    "itens": [
+      { "id": "creme-culinario-a-tal-da-castanha", "nome": "A Tal da Castanha – Creme Culinário Vegetal", "categoria": "creme culinário vegetal", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/creme-culinario-a-tal-da-castanha.webp", "productUrl": "https://www.ataldacastanha.com.br/produtos/creme-de-leite-vegetal/", "buttonLabel": "Comprar" },
+      { "id": "nude-bebida-de-aveia", "nome": "Nude – Bebida de Aveia", "categoria": "bebida vegetal", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/bebida-aveia-nude.webp", "productUrl": "https://heynude.com.br/", "buttonLabel": "Comprar" },
+      { "id": "a-tal-da-castanha-bebida-vegetal", "nome": "A Tal da Castanha – Bebida Vegetal", "categoria": "bebida vegetal", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/bebida-vegetal-a-tal-da-castanha.webp", "productUrl": "https://www.ataldacastanha.com.br/produtos-categorias/bebidas-vegetais/", "buttonLabel": "Comprar" },
+      { "id": "nude-creme-de-aveia", "nome": "Nude – Creme de Aveia", "categoria": "creme culinário vegetal", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/creme-aveia-nude.webp", "productUrl": "https://heynude.com.br/products/nude-creme-de-aveia-sem-gluten-200g", "buttonLabel": "Comprar" }
+    ]
+  },
+  {
+    "secao": "Fibras, Aveias e Especiarias",
+    "itens": [
+      { "id": "psyllium-souly", "nome": "Psyllium Souly", "categoria": "fibra", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/psyllium-souly.webp", "productUrl": "https://www.souly.com.br/produtos/psyllium-em-po-souly-180g/", "buttonLabel": "Comprar" },
+      { "id": "souly-canela-do-ceilao", "nome": "Souly – Canela do Ceilão", "categoria": "especiaria", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/canela-ceilao-souly.webp", "productUrl": "https://souly.com.br/produto/canela-do-ceilao-vedica-em-po-souly-60g/", "buttonLabel": "Comprar" },
+      { "id": "psyllium-vitalin", "nome": "Psyllium Vitalin", "categoria": "fibra", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/psyllium-vitalin.webp", "productUrl": "https://vitalin.com.br/produto/lancamentos/psyllium-vitalin-100g/", "buttonLabel": "Comprar" },
+      { "id": "native-aveia-organica", "nome": "Native – Aveia Orgânica Sem Glúten", "categoria": "aveia sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/aveia-native.webp", "productUrl": "https://www.nativeorganicos.com.br/aveia-em-flocos-finos-org--250gr-9544/p?idsku=88", "buttonLabel": "Comprar" },
+      { "id": "vitalin-aveia-sem-gluten", "nome": "Vitalin – Aveia Sem Glúten", "categoria": "aveia sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "Também disponível em flocos grossos, farelo e farinha.", "imagem": "/produtos/aveia-vitalin.webp", "productUrl": "https://loja.vitalin.com.br/produtos/aveia-flocos-finos-sem-gluten-vitalin-200g/", "buttonLabel": "Comprar" }
+    ]
+  },
+  {
+    "secao": "Molhos, Temperos e Culinários",
+    "itens": [
+      { "id": "copra-shoyu-coco", "nome": "Copra – Shoyu de Coco / Coco Aminos", "categoria": "shoyu de coco", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/shoyu-coco-copra.png", "productUrl": "https://copra.com.br/nossosprodutos/shoyu-coco/", "buttonLabel": "Comprar" },
+      { "id": "qualicoco-shoyu-de-coco", "nome": "QualiCoco – Shoyu de Coco", "categoria": "shoyu de coco", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/shoyu-qualicoco.webp", "productUrl": "https://www.lojaqualicoco.com.br/", "buttonLabel": "Comprar" },
+      { "id": "stevita-stevia-100", "nome": "Stevita – Stevia 100%", "categoria": "adoçante natural", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "Escolher a versão Stevia 100% – embalagem verde-escura.", "imagem": "/produtos/stevia-stevita.webp", "productUrl": "https://www.instagram.com/stevitaoficial/", "buttonLabel": "Comprar" },
+      { "id": "sesamoreal-tahine", "nome": "Sesamoreal – Tahine", "categoria": "tahine", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/tahine-sesamoreal.webp", "productUrl": "https://sesamoreal.com.br/collections/tahines", "buttonLabel": "Comprar" }
+    ]
+  },
+  {
+    "secao": "Iogurtes Vegetais",
+    "itens": [
+      { "id": "pamalani-veggiegurt-coco", "nome": "Pamalani – Veggiegurt de Coco", "categoria": "iogurte vegetal", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/iogurte-coco-pamalani.jpg", "productUrl": "http://www.pamalani.com.br/produtos/veggiegurts", "buttonLabel": "Comprar" }
+    ]
+  },
+  {
+    "secao": "Chás",
+    "itens": [
+      { "id": "chas-twinings", "nome": "Chás Twinings", "categoria": "chá", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/cha-twinings.png", "productUrl": "https://www.twinings.com.br/linha-completa", "buttonLabel": "Comprar" },
+      { "id": "chas-habito-vida", "nome": "Chás Hábito Vida", "categoria": "chá", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/cha-habito-vida.webp", "productUrl": "https://habitovida.com.br/collections/blends", "buttonLabel": "Comprar" },
+      { "id": "chas-organicos-native", "nome": "Chás Orgânicos Native", "categoria": "chá", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/cha-native.png", "productUrl": "https://www.nativeorganicos.com.br/chas-de-infusao/d", "buttonLabel": "Comprar" }
+    ]
+  }
+]

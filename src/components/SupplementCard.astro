@@ -10,22 +10,38 @@ interface Item {
   cupom: string;
   observacao: string;
   imagem: string;
+  productUrl?: string;
+  buttonLabel?: string;
+  proteinaComplemento?: string;
+  categorias?: string[];
 }
 
 interface Props {
   item: Item;
   estrategico?: boolean;
+  categoria?: string;
 }
 
-const { item, estrategico = false } = Astro.props;
+const { item, estrategico = false, categoria = 'Suplementação' } = Astro.props;
 const gomaLabel = item.goma === 'a confirmar' ? 'Goma a confirmar' : item.goma;
 const buscaTexto = [item.nome, item.categoria, item.goma, item.observacao, estrategico ? 'estrategico' : '']
   .join(' ')
   .toLowerCase()
   .normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '');
+
+const Tag = item.productUrl ? 'a' : 'div';
+const linkAttrs = item.productUrl
+  ? { href: item.productUrl, target: '_blank', rel: 'noopener noreferrer' }
+  : {};
 ---
-<div class="card product-card" data-card data-categoria="Suplementação" data-busca={buscaTexto}>
+<Tag
+  class:list={['card', 'product-card', { 'has-link': item.productUrl }]}
+  data-card
+  data-categoria={categoria}
+  data-busca={buscaTexto}
+  {...linkAttrs}
+>
   <div class="card-cover product-cover">
     {item.imagem
       ? <img src={item.imagem} alt={item.nome} loading="lazy" />
@@ -41,7 +57,7 @@ const buscaTexto = [item.nome, item.categoria, item.goma, item.observacao, estra
 
     {(item.proteinaPorDose || gomaLabel) && (
       <div class="product-specs">
-        {item.proteinaPorDose && <span class="spec-proteina">{item.proteinaPorDose} de proteína</span>}
+        {item.proteinaPorDose && <span class="spec-proteina">{item.proteinaPorDose} de proteína{item.proteinaComplemento ? ` ${item.proteinaComplemento}` : ''}</span>}
         {gomaLabel && <span class="tag">{gomaLabel}</span>}
       </div>
     )}
@@ -51,5 +67,16 @@ const buscaTexto = [item.nome, item.categoria, item.goma, item.observacao, estra
     )}
 
     {item.observacao && <p class="product-obs">{item.observacao}</p>}
+
+    {item.productUrl && (
+      <span class="product-buy-btn">
+        {item.buttonLabel ?? 'Comprar no site oficial'}
+        <svg class="icon-external" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      </span>
+    )}
   </div>
-</div>
+</Tag>
