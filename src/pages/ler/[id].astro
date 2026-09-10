@@ -1,0 +1,201 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import materiais from '../../data/materiais.json';
+
+export function getStaticPaths() {
+  return materiais.map((material) => ({
+    params: { id: material.id },
+    props: { material },
+  }));
+}
+
+interface Material {
+  id: string;
+  titulo: string;
+  descricao: string;
+  categorias: string[];
+  arquivo: string;
+  imagem: string;
+  destaque: boolean;
+  tags: string[];
+}
+
+interface Props {
+  material: Material;
+}
+
+const { material } = Astro.props;
+---
+<Layout title={`${material.titulo} | Biblioteca do Paciente`} description={material.descricao}>
+  <div class="leitor-page">
+    <header class="leitor-header">
+      <div class="wrap leitor-header-inner">
+        <a href="/" class="leitor-voltar">← Voltar para a biblioteca</a>
+        <h1 class="leitor-titulo">{material.titulo}</h1>
+        <a href={material.arquivo} download class="leitor-download leitor-download-header">
+          Baixar PDF
+        </a>
+      </div>
+    </header>
+
+    <main class="leitor-main wrap">
+      <div class="leitor-toolbar" id="pdf-toolbar">
+        <div class="leitor-toolbar-group">
+          <button type="button" id="pdf-prev" class="leitor-btn" aria-label="Página anterior" disabled>‹</button>
+          <span class="leitor-page-indicator">
+            Página <span id="pdf-page-atual">1</span> de <span id="pdf-page-total">—</span>
+          </span>
+          <button type="button" id="pdf-next" class="leitor-btn" aria-label="Próxima página" disabled>›</button>
+        </div>
+        <div class="leitor-toolbar-group">
+          <button type="button" id="pdf-zoom-out" class="leitor-btn" aria-label="Diminuir zoom" disabled>−</button>
+          <span class="leitor-zoom-indicator" id="pdf-zoom-nivel">100%</span>
+          <button type="button" id="pdf-zoom-in" class="leitor-btn" aria-label="Aumentar zoom" disabled>+</button>
+        </div>
+      </div>
+
+      <div class="leitor-canvas-outer">
+        <div class="leitor-canvas-wrap" id="pdf-canvas-wrap" data-pdf-url={material.arquivo}>
+          <p class="leitor-status" id="pdf-status">Carregando material…</p>
+          <canvas id="pdf-canvas"></canvas>
+        </div>
+      </div>
+
+      <a href={material.arquivo} download class="leitor-download leitor-download-footer">
+        Baixar PDF
+      </a>
+
+      <a href="/" class="leitor-voltar leitor-voltar-footer">← Voltar para a biblioteca</a>
+    </main>
+  </div>
+
+  <script>
+    import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+    import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
+
+    const wrap = document.querySelector<HTMLDivElement>('#pdf-canvas-wrap');
+    const canvas = document.querySelector<HTMLCanvasElement>('#pdf-canvas');
+    const statusEl = document.querySelector<HTMLParagraphElement>('#pdf-status');
+    const pageAtualEl = document.querySelector<HTMLSpanElement>('#pdf-page-atual');
+    const pageTotalEl = document.querySelector<HTMLSpanElement>('#pdf-page-total');
+    const zoomNivelEl = document.querySelector<HTMLSpanElement>('#pdf-zoom-nivel');
+    const btnPrev = document.querySelector<HTMLButtonElement>('#pdf-prev');
+    const btnNext = document.querySelector<HTMLButtonElement>('#pdf-next');
+    const btnZoomIn = document.querySelector<HTMLButtonElement>('#pdf-zoom-in');
+    const btnZoomOut = document.querySelector<HTMLButtonElement>('#pdf-zoom-out');
+
+    const ctx = canvas?.getContext('2d') ?? null;
+    const url = wrap?.dataset.pdfUrl;
+
+    let pdfDoc: import('pdfjs-dist').PDFDocumentProxy | null = null;
+    let paginaAtual = 1;
+    let zoomFator = 1;
+    let renderizando = false;
+    let renderPendente: number | null = null;
+
+    function larguraDisponivel() {
+      return wrap?.clientWidth ?? 320;
+    }
+
+    function atualizarControles() {
+      if (pageAtualEl) pageAtualEl.textContent = String(paginaAtual);
+      if (pageTotalEl) pageTotalEl.textContent = pdfDoc ? String(pdfDoc.numPages) : '—';
+      if (zoomNivelEl) zoomNivelEl.textContent = `${Math.round(zoomFator * 100)}%`;
+      if (btnPrev) btnPrev.disabled = paginaAtual <= 1;
+      if (btnNext) btnNext.disabled = pdfDoc ? paginaAtual >= pdfDoc.numPages : true;
+      if (btnZoomOut) btnZoomOut.disabled = zoomFator <= 0.5;
+      if (btnZoomIn) btnZoomIn.disabled = zoomFator >= 3;
+    }
+
+    async function renderizarPagina(num: number) {
+      if (!pdfDoc || !canvas || !ctx) return;
+      if (renderizando) {
+        renderPendente = num;
+        return;
+      }
+      renderizando = true;
+
+      const page = await pdfDoc.getPage(num);
+      const viewportBase = page.getViewport({ scale: 1 });
+      const escalaAjuste = larguraDisponivel() / viewportBase.width;
+      const escalaFinal = escalaAjuste * zoomFator;
+      const dpr = window.devicePixelRatio || 1;
+      const viewport = page.getViewport({ scale: escalaFinal * dpr });
+
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      canvas.style.width = `${viewport.width / dpr}px`;
+      canvas.style.height = `${viewport.height / dpr}px`;
+
+      await page.render({ canvasContext: ctx, viewport, canvas }).promise;
+
+      renderizando = false;
+      if (renderPendente !== null) {
+        const proxima = renderPendente;
+        renderPendente = null;
+        renderizarPagina(proxima);
+      }
+    }
+
+    async function irParaPagina(num: number) {
+      if (!pdfDoc) return;
+      paginaAtual = Math.min(Math.max(num, 1), pdfDoc.numPages);
+      atualizarControles();
+      await renderizarPagina(paginaAtual);
+    }
+
+    btnPrev?.addEventListener('click', () => irParaPagina(paginaAtual - 1));
+    btnNext?.addEventListener('click', () => irParaPagina(paginaAtual + 1));
+
+    btnZoomIn?.addEventListener('click', () => {
+      zoomFator = Math.min(zoomFator + 0.25, 3);
+      atualizarControles();
+      renderizarPagina(paginaAtual);
+    });
+
+    btnZoomOut?.addEventListener('click', () => {
+      zoomFator = Math.max(zoomFator - 0.25, 0.5);
+      atualizarControles();
+      renderizarPagina(paginaAtual);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!pdfDoc) return;
+      if (e.key === 'ArrowRight') irParaPagina(paginaAtual + 1);
+      if (e.key === 'ArrowLeft') irParaPagina(paginaAtual - 1);
+    });
+
+    let resizeTimeout: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => renderizarPagina(paginaAtual), 150);
+    });
+
+    async function iniciar() {
+      if (!url || !canvas || !ctx) {
+        if (statusEl) {
+          statusEl.hidden = false;
+          statusEl.textContent = 'Não foi possível carregar este material. Use o botão "Baixar PDF" abaixo.';
+        }
+        return;
+      }
+      try {
+        const loadingTask = pdfjsLib.getDocument({ url });
+        pdfDoc = await loadingTask.promise;
+        if (statusEl) statusEl.hidden = true;
+        atualizarControles();
+        await renderizarPagina(1);
+      } catch (err) {
+        if (statusEl) {
+          statusEl.hidden = false;
+          statusEl.textContent = 'Não foi possível carregar este material. Use o botão "Baixar PDF" abaixo.';
+        }
+        console.error('Erro ao carregar PDF:', err);
+      }
+    }
+
+    iniciar();
+  </script>
+</Layout>

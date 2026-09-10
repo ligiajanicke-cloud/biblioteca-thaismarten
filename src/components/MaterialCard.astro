@@ -26,9 +26,7 @@ const buscaTexto = [material.titulo, material.descricao, ...material.categorias,
 ---
 <a
   class:list={['card', { destaque: material.destaque }]}
-  href={material.arquivo}
-  target="_blank"
-  rel="noopener"
+  href={`/ler/${material.id}/`}
   data-card
   data-categoria={categoria}
   data-busca={buscaTexto}
@@ -43,6 +41,6 @@ const buscaTexto = [material.titulo, material.descricao, ...material.categorias,
     <div class="card-categoria">{categoria}</div>
     <h3 class="card-titulo">{material.titulo}</h3>
     <p class="card-descricao">{material.descricao}</p>
-    <span class="card-cta">Ver material →</span>
+    <span class="card-cta">Ler material →</span>
   </div>
 </a>
