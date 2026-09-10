@@ -18,7 +18,6 @@
     "secao": "Pães Sem Glúten",
     "itens": [
       { "id": "padoca-do-bem-paes", "nome": "Padoca do Bem – Pães Sem Glúten", "categoria": "pão sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "São Paulo", "imagem": "/produtos/pao-padoca-do-bem.jpg", "productUrl": "https://www.padocadobem.com/", "buttonLabel": "Comprar" },
-      { "id": "a-fornada-paes", "nome": "A Fornada – Pães Sem Glúten", "categoria": "pão sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "São Paulo", "imagem": "/produtos/pao-a-fornada.webp", "productUrl": "https://afornadapadaria.com.br/", "buttonLabel": "Comprar" },
       { "id": "myfit-paes-pelotas", "nome": "MyFit – Pães Sem Glúten", "categoria": "pão sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "Pelotas/RS", "imagem": "/produtos/pao-myfit-pelotas.jpeg", "productUrl": "https://wa.me/18087212592?text=Ol%C3%A1!%20Vim%20pela%20Biblioteca%20da%20Dra.%20Thais%20Marten%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20p%C3%A3es%20sem%20gl%C3%BAten.", "buttonLabel": "Pedir pelo WhatsApp" }
     ]
   },
@@ -46,7 +45,8 @@
       { "id": "souly-canela-do-ceilao", "nome": "Souly – Canela do Ceilão", "categoria": "especiaria", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/canela-ceilao-souly.webp", "productUrl": "https://souly.com.br/produto/canela-do-ceilao-vedica-em-po-souly-60g/", "buttonLabel": "Comprar" },
       { "id": "psyllium-vitalin", "nome": "Psyllium Vitalin", "categoria": "fibra", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/psyllium-vitalin.webp", "productUrl": "https://vitalin.com.br/produto/lancamentos/psyllium-vitalin-100g/", "buttonLabel": "Comprar" },
       { "id": "native-aveia-organica", "nome": "Native – Aveia Orgânica Sem Glúten", "categoria": "aveia sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/aveia-native.webp", "productUrl": "https://www.nativeorganicos.com.br/aveia-em-flocos-finos-org--250gr-9544/p?idsku=88", "buttonLabel": "Comprar" },
-      { "id": "vitalin-aveia-sem-gluten", "nome": "Vitalin – Aveia Sem Glúten", "categoria": "aveia sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "Também disponível em flocos grossos, farelo e farinha.", "imagem": "/produtos/aveia-vitalin.webp", "productUrl": "https://loja.vitalin.com.br/produtos/aveia-flocos-finos-sem-gluten-vitalin-200g/", "buttonLabel": "Comprar" }
+      { "id": "vitalin-aveia-sem-gluten", "nome": "Vitalin – Aveia Sem Glúten", "categoria": "aveia sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "Também disponível em flocos grossos, farelo e farinha.", "imagem": "/produtos/aveia-vitalin.webp", "productUrl": "https://loja.vitalin.com.br/produtos/aveia-flocos-finos-sem-gluten-vitalin-200g/", "buttonLabel": "Comprar" },
+      { "id": "australia-foods-granola-keto", "nome": "Australia Foods – Granola Keto Original", "categoria": "granola", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/granola-australia-keto.webp", "productUrl": "https://www.australiafoods.com.br/products/granola-keto-original", "buttonLabel": "Comprar" }
     ]
   },
   {
