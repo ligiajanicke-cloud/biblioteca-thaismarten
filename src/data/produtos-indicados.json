@@ -2,8 +2,8 @@
   {
     "secao": "Snacks e Bebidas Funcionais",
     "itens": [
-      { "id": "glulac-biscoitos-sem-gluten", "nome": "Glulac – Biscoitos Sem Glúten", "categoria": "biscoito sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "", "productUrl": "https://www.glulac.com.br/produtos", "buttonLabel": "Comprar" },
-      { "id": "sede-energy-bebida-funcional", "nome": "SEDE Energy – Bebida Funcional", "categoria": "bebida funcional", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "", "productUrl": "https://sintasede.com.br/", "buttonLabel": "Comprar" }
+      { "id": "glulac-biscoitos-sem-gluten", "nome": "Glulac – Biscoitos Sem Glúten", "categoria": "biscoito sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/biscoito-glulac.webp", "productUrl": "https://www.glulac.com.br/produtos", "buttonLabel": "Comprar" },
+      { "id": "sede-energy-bebida-funcional", "nome": "SEDE Energy – Bebida Funcional", "categoria": "bebida funcional", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/bebida-sede.webp", "productUrl": "https://sintasede.com.br/", "buttonLabel": "Comprar" }
     ]
   },
   {
@@ -44,7 +44,7 @@
     "itens": [
       { "id": "psyllium-souly", "nome": "Psyllium Souly", "categoria": "fibra", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/psyllium-souly.webp", "productUrl": "https://www.souly.com.br/produtos/psyllium-em-po-souly-180g/", "buttonLabel": "Comprar" },
       { "id": "souly-canela-do-ceilao", "nome": "Souly – Canela do Ceilão", "categoria": "especiaria", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/canela-ceilao-souly.webp", "productUrl": "https://souly.com.br/produto/canela-do-ceilao-vedica-em-po-souly-60g/", "buttonLabel": "Comprar" },
-      { "id": "psyllium-vitalin", "nome": "Psyllium Vitalin", "categoria": "fibra", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "", "productUrl": "https://vitalin.com.br/produto/lancamentos/psyllium-vitalin-100g/", "buttonLabel": "Comprar" },
+      { "id": "psyllium-vitalin", "nome": "Psyllium Vitalin", "categoria": "fibra", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/psyllium-vitalin.webp", "productUrl": "https://vitalin.com.br/produto/lancamentos/psyllium-vitalin-100g/", "buttonLabel": "Comprar" },
       { "id": "native-aveia-organica", "nome": "Native – Aveia Orgânica Sem Glúten", "categoria": "aveia sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "", "imagem": "/produtos/aveia-native.webp", "productUrl": "https://www.nativeorganicos.com.br/aveia-em-flocos-finos-org--250gr-9544/p?idsku=88", "buttonLabel": "Comprar" },
       { "id": "vitalin-aveia-sem-gluten", "nome": "Vitalin – Aveia Sem Glúten", "categoria": "aveia sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "Também disponível em flocos grossos, farelo e farinha.", "imagem": "/produtos/aveia-vitalin.webp", "productUrl": "https://loja.vitalin.com.br/produtos/aveia-flocos-finos-sem-gluten-vitalin-200g/", "buttonLabel": "Comprar" }
     ]
