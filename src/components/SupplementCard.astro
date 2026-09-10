@@ -12,6 +12,8 @@ interface Item {
   imagem: string;
   productUrl?: string;
   buttonLabel?: string;
+  proteinaComplemento?: string;
+  categorias?: string[];
 }
 
 interface Props {
@@ -55,7 +57,7 @@ const linkAttrs = item.productUrl
 
     {(item.proteinaPorDose || gomaLabel) && (
       <div class="product-specs">
-        {item.proteinaPorDose && <span class="spec-proteina">{item.proteinaPorDose} de proteína</span>}
+        {item.proteinaPorDose && <span class="spec-proteina">{item.proteinaPorDose} de proteína{item.proteinaComplemento ? ` ${item.proteinaComplemento}` : ''}</span>}
         {gomaLabel && <span class="tag">{gomaLabel}</span>}
       </div>
     )}

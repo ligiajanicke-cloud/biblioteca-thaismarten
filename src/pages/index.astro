@@ -11,12 +11,14 @@ import Footer from '../components/Footer.astro';
 import materiais from '../data/materiais.json';
 import videos from '../data/videos.json';
 import suplementos from '../data/suplementos.json';
+import produtosIndicados from '../data/produtos-indicados.json';
 import higieneSono from '../data/higiene-sono.json';
 
 const ORDEM_CATEGORIAS = [
   'Comece aqui',
   'Te auxilia no dia a dia',
   'Suplementação',
+  'Produtos indicados',
   'Saúde intestinal',
   'Receitas',
   'Exames de precisão',
@@ -27,8 +29,13 @@ const categoriasEncontradas = new Set<string>([
   ...materiais.flatMap((m) => m.categorias),
   ...videos.flatMap((v) => v.categorias),
   'Suplementação',
+  'Produtos indicados',
   'Higiene do sono',
 ]);
+
+const itensCompartilhadosProdutosIndicados = suplementos
+  .flatMap((grupo) => grupo.itens)
+  .filter((item) => item.categorias?.includes('Produtos indicados'));
 
 const categorias = [
   ...ORDEM_CATEGORIAS.filter((c) => categoriasEncontradas.has(c)),
@@ -87,6 +94,41 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
                 <div class="grid">
                   {grupo.itens.map((item) => (
                     <SupplementCard item={item} estrategico={grupo.secao === 'Estratégicos'} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </section>
+        );
+      }
+
+      if (categoria === 'Produtos indicados') {
+        return (
+          <section class="section categoria-section" data-categoria-secao={categoria}>
+            <div class="section-title stack">
+              <span class="eyebrow">◇ {categoria}</span>
+              <h2>Produtos Indicados para o Dia a Dia</h2>
+            </div>
+            {itensCompartilhadosProdutosIndicados.length > 0 && (
+              <div class="subsecao">
+                <div class="section-title">
+                  <span class="eyebrow">◇ Proteínas Prontas e Barrinhas</span>
+                </div>
+                <div class="grid">
+                  {itensCompartilhadosProdutosIndicados.map((item) => (
+                    <SupplementCard item={item} categoria={categoria} />
+                  ))}
+                </div>
+              </div>
+            )}
+            {produtosIndicados.map((grupo) => (
+              <div class="subsecao">
+                <div class="section-title">
+                  <span class="eyebrow">◇ {grupo.secao}</span>
+                </div>
+                <div class="grid">
+                  {grupo.itens.map((item) => (
+                    <SupplementCard item={item} categoria={categoria} />
                   ))}
                 </div>
               </div>
