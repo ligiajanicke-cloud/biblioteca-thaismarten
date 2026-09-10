@@ -18,7 +18,6 @@
     "secao": "Pães Sem Glúten",
     "itens": [
       { "id": "padoca-do-bem-paes", "nome": "Padoca do Bem – Pães Sem Glúten", "categoria": "pão sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "São Paulo", "imagem": "/produtos/pao-padoca-do-bem.jpg", "productUrl": "https://www.padocadobem.com/", "buttonLabel": "Comprar" },
-      { "id": "a-fornada-paes", "nome": "A Fornada – Pães Sem Glúten", "categoria": "pão sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "São Paulo", "imagem": "/produtos/pao-a-fornada.webp", "productUrl": "https://afornadapadaria.com.br/", "buttonLabel": "Comprar" },
       { "id": "myfit-paes-pelotas", "nome": "MyFit – Pães Sem Glúten", "categoria": "pão sem glúten", "proteinaPorDose": "", "goma": "", "cupom": "", "observacao": "Pelotas/RS", "imagem": "/produtos/pao-myfit-pelotas.jpeg", "productUrl": "https://wa.me/18087212592?text=Ol%C3%A1!%20Vim%20pela%20Biblioteca%20da%20Dra.%20Thais%20Marten%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20p%C3%A3es%20sem%20gl%C3%BAten.", "buttonLabel": "Pedir pelo WhatsApp" }
     ]
   },
