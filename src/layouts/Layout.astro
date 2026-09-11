@@ -21,9 +21,30 @@ const { title, description = 'Materiais de apoio da Dra. Thais Marten para pacie
       href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#3E1A0C" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Biblioteca Thais" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
     <title>{title}</title>
   </head>
   <body>
     <slot />
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js').catch(() => {
+            // Instalação como PWA continua funcionando via manifest
+            // mesmo que o registro do Service Worker falhe.
+          });
+        });
+      }
+    </script>
   </body>
 </html>

@@ -7,6 +7,7 @@ import MaterialCard from '../components/MaterialCard.astro';
 import VideoCard from '../components/VideoCard.astro';
 import VideoModal from '../components/VideoModal.astro';
 import SupplementCard from '../components/SupplementCard.astro';
+import InstallBanner from '../components/InstallBanner.astro';
 import Footer from '../components/Footer.astro';
 import materiais from '../data/materiais.json';
 import videos from '../data/videos.json';
@@ -49,6 +50,7 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
   <Header />
   <SearchBar />
   <CategoryFilters categorias={categorias} />
+  <InstallBanner />
 
   <main class="wrap">
     {destaques.length > 0 && (

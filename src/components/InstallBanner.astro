@@ -1,0 +1,82 @@
+---
+---
+<div class="install-banner wrap" id="install-banner" hidden>
+  <div class="install-banner-texto">
+    <p class="install-banner-titulo">Tenha a Biblioteca sempre à mão</p>
+    <p class="install-banner-subtitulo" id="install-banner-instrucao">
+      Adicione à tela inicial do seu celular para acessar como um aplicativo.
+    </p>
+  </div>
+  <div class="install-banner-acoes">
+    <button type="button" class="install-banner-btn" id="install-banner-btn" hidden>
+      Instalar aplicativo
+    </button>
+    <button type="button" class="install-banner-fechar" id="install-banner-fechar" aria-label="Fechar">×</button>
+  </div>
+</div>
+
+<script>
+  const banner = document.querySelector<HTMLElement>('#install-banner');
+  const instrucaoEl = document.querySelector<HTMLElement>('#install-banner-instrucao');
+  const instalarBtn = document.querySelector<HTMLButtonElement>('#install-banner-btn');
+  const fecharBtn = document.querySelector<HTMLButtonElement>('#install-banner-fechar');
+
+  const CHAVE_DISMISS = 'biblioteca-install-dismissed';
+
+  function jaInstalado() {
+    const standalone = window.matchMedia('(display-mode: standalone)').matches;
+    const iosStandalone = (navigator as unknown as { standalone?: boolean }).standalone === true;
+    return standalone || iosStandalone;
+  }
+
+  function foiDispensado() {
+    try {
+      return localStorage.getItem(CHAVE_DISMISS) === '1';
+    } catch {
+      return false;
+    }
+  }
+
+  function ehIOS() {
+    return /iphone|ipad|ipod/i.test(navigator.userAgent) && !('MSStream' in window);
+  }
+
+  let deferredPrompt: Event | null = null;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (banner && !jaInstalado() && !foiDispensado()) {
+      banner.hidden = false;
+      if (instalarBtn) instalarBtn.hidden = false;
+    }
+  });
+
+  instalarBtn?.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    // @ts-expect-error evento não tipado nativamente
+    deferredPrompt.prompt();
+    deferredPrompt = null;
+    if (instalarBtn) instalarBtn.hidden = true;
+  });
+
+  fecharBtn?.addEventListener('click', () => {
+    if (banner) banner.hidden = true;
+    try {
+      localStorage.setItem(CHAVE_DISMISS, '1');
+    } catch {
+      // localStorage indisponível: apenas oculta nesta sessão
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    if (banner) banner.hidden = true;
+  });
+
+  if (!jaInstalado() && !foiDispensado() && ehIOS()) {
+    if (instrucaoEl) {
+      instrucaoEl.textContent = 'No Safari, toque em Compartilhar e depois em "Adicionar à Tela de Início".';
+    }
+    if (banner) banner.hidden = false;
+  }
+</script>
