@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#3E1A0C" />
+
+  <circle cx="256" cy="256" r="244" fill="none" stroke="#BE9B5C" stroke-width="2.5" />
+  <circle cx="256" cy="256" r="228" fill="none" stroke="#BE9B5C" stroke-width="1.5" />
+
+  <text x="256" y="150" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#BE9B5C">◇</text>
+
+  <text x="256" y="248" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="78" letter-spacing="4" fill="#FBF6EE">THAIS</text>
+
+  <line x1="176" y1="278" x2="336" y2="278" stroke="#BE9B5C" stroke-width="1.5" />
+
+  <text x="256" y="322" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="10" fill="#BE9B5C">MARTEN</text>
+
+  <text x="256" y="382" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#BE9B5C">◇</text>
+</svg>
