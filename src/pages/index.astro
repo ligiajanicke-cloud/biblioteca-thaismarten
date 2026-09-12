@@ -203,7 +203,9 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
     const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
     const cards = document.querySelectorAll<HTMLElement>('[data-card]');
     const destaquesSection = document.querySelector<HTMLElement>('#secao-destaques');
+    const ajudaComSection = document.querySelector<HTMLElement>('#ajuda-com');
     const categoriaSections = document.querySelectorAll<HTMLElement>('.categoria-section');
+    const subsecoes = document.querySelectorAll<HTMLElement>('.subsecao');
     const estadoVazioGeral = document.querySelector<HTMLElement>('#estado-vazio-geral');
 
     let categoriaAtiva: string | null = null;
@@ -283,6 +285,13 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
         card.hidden = !(buscaOk && subfiltroOk);
       });
 
+      subsecoes.forEach((subsecao) => {
+        const temVisivel = Array.from(subsecao.querySelectorAll<HTMLElement>('[data-card]')).some(
+          (c) => !c.hidden
+        );
+        subsecao.hidden = !temVisivel;
+      });
+
       let algumaSecaoVisivel = false;
 
       categoriaSections.forEach((section) => {
@@ -300,6 +309,10 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
 
       if (destaquesSection) {
         destaquesSection.hidden = termoBruto !== '' || categoriaAtiva !== null;
+      }
+
+      if (ajudaComSection) {
+        ajudaComSection.hidden = termoBruto !== '' || categoriaAtiva !== null;
       }
     }
 
