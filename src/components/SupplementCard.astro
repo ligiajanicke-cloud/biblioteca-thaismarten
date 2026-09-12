@@ -14,6 +14,7 @@ interface Item {
   buttonLabel?: string;
   proteinaComplemento?: string;
   categorias?: string[];
+  subcategorias?: string[];
 }
 
 interface Props {
@@ -24,7 +25,15 @@ interface Props {
 
 const { item, estrategico = false, categoria = 'Suplementação' } = Astro.props;
 const gomaLabel = item.goma === 'a confirmar' ? 'Goma a confirmar' : item.goma;
-const buscaTexto = [item.nome, item.categoria, item.goma, item.observacao, estrategico ? 'estrategico' : '']
+const buscaTexto = [
+  item.nome,
+  item.categoria,
+  item.goma,
+  item.observacao,
+  categoria,
+  ...(item.subcategorias ?? []),
+  estrategico ? 'estrategico' : '',
+]
   .join(' ')
   .toLowerCase()
   .normalize('NFD')
@@ -39,6 +48,7 @@ const linkAttrs = item.productUrl
   class:list={['card', 'product-card', { 'has-link': item.productUrl }]}
   data-card
   data-categoria={categoria}
+  data-subcategorias={(item.subcategorias ?? []).join(',')}
   data-busca={buscaTexto}
   {...linkAttrs}
 >

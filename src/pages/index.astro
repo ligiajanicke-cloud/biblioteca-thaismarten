@@ -8,6 +8,8 @@ import VideoCard from '../components/VideoCard.astro';
 import VideoModal from '../components/VideoModal.astro';
 import SupplementCard from '../components/SupplementCard.astro';
 import InstallBanner from '../components/InstallBanner.astro';
+import AjudaComShortcuts from '../components/AjudaComShortcuts.astro';
+import HigieneSonoChecklist from '../components/HigieneSonoChecklist.astro';
 import Footer from '../components/Footer.astro';
 import materiais from '../data/materiais.json';
 import videos from '../data/videos.json';
@@ -50,6 +52,7 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
   <Header />
   <SearchBar />
   <CategoryFilters categorias={categorias} />
+  <AjudaComShortcuts />
   <InstallBanner />
 
   <main class="wrap">
@@ -86,7 +89,13 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
           <section class="section categoria-section" data-categoria-secao={categoria}>
             <div class="section-title stack">
               <span class="eyebrow">◇ {categoria}</span>
-              <h2>Suplementos e Produtos Recomendados</h2>
+              <h2>Suplementos Recomendados</h2>
+            </div>
+            <div class="subfiltros" data-subfiltro-area={categoria}>
+              <button type="button" class="subfiltro-chip" data-subfiltro-limpar>Ver todos</button>
+              {['Colágenos', 'Whey', 'Beef', 'Prontos', 'Creatina', 'Eletrólitos', 'Pré-treino'].map((sub) => (
+                <button type="button" class="subfiltro-chip" data-subfiltro={sub}>{sub}</button>
+              ))}
             </div>
             {suplementos.map((grupo) => (
               <div class="subsecao">
@@ -100,6 +109,7 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
                 </div>
               </div>
             ))}
+            <p class="ultima-revisao">Última revisão: setembro/2026</p>
           </section>
         );
       }
@@ -110,6 +120,12 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
             <div class="section-title stack">
               <span class="eyebrow">◇ {categoria}</span>
               <h2>Produtos Indicados para o Dia a Dia</h2>
+            </div>
+            <div class="subfiltros" data-subfiltro-area={categoria}>
+              <button type="button" class="subfiltro-chip" data-subfiltro-limpar>Ver todos</button>
+              {['Proteínas', 'Barrinhas', 'Massas', 'Pães', 'Bebidas vegetais', 'Aveias/fibras', 'Molhos', 'Chás'].map((sub) => (
+                <button type="button" class="subfiltro-chip" data-subfiltro={sub}>{sub}</button>
+              ))}
             </div>
             {itensCompartilhadosProdutosIndicados.length > 0 && (
               <div class="subsecao">
@@ -135,6 +151,7 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
                 </div>
               </div>
             ))}
+            <p class="ultima-revisao">Última revisão: setembro/2026</p>
           </section>
         );
       }
@@ -149,6 +166,7 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
             <p class="page-note-inline">
               Recursos que podem auxiliar na construção de uma rotina noturna mais adequada. A indicação e o uso devem respeitar a estratégia individual de cada paciente.
             </p>
+            <HigieneSonoChecklist />
             <div class="grid">
               {higieneSono.map((item) => (
                 <SupplementCard item={item} categoria={categoria} />
@@ -194,12 +212,75 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
       return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     }
 
+    // Camada de sin\u00f4nimos: traduz a linguagem do paciente para os termos
+    // que realmente aparecem nos materiais/produtos cadastrados. Chaves e
+    // valores j\u00e1 normalizados (sem acento, min\u00fasculo).
+    const SINONIMOS: Record<string, string[]> = {
+      'prisao de ventre': ['constipacao'],
+      'intestino preso': ['constipacao'],
+      'estufada': ['distensao'],
+      'estufamento': ['distensao'],
+      'gases': ['distensao'],
+      'proteina': ['protein', 'proteica', 'colageno', 'whey', 'beef protein', 'equivalencia proteica'],
+      'leite': ['caseina'],
+      'viajar': ['viagem'],
+      'restaurante': ['viagem'],
+      'comer fora': ['viagem'],
+      'produto': ['produtos indicados'],
+      'mercado': ['produtos indicados'],
+      'exame': ['exames de precisao'],
+      'coleta': ['exames de precisao'],
+      'mounjaro': ['glp-1'],
+      'tirzepatida': ['glp-1'],
+    };
+
+    function termosDeBusca(termo: string): string[] {
+      const termos = new Set([termo]);
+      for (const [chave, alvos] of Object.entries(SINONIMOS)) {
+        if (termo.includes(chave)) alvos.forEach((alvo) => termos.add(alvo));
+      }
+      return [...termos];
+    }
+
+    const subfiltroAtivoPorArea: Record<string, string | null> = {};
+
+    document.querySelectorAll<HTMLElement>('[data-subfiltro-area]').forEach((area) => {
+      const nomeArea = area.dataset.subfiltroArea ?? '';
+      subfiltroAtivoPorArea[nomeArea] = null;
+      const botoesArea = area.querySelectorAll<HTMLButtonElement>('.subfiltro-chip');
+      botoesArea.forEach((botao) => {
+        botao.addEventListener('click', () => {
+          if (botao.hasAttribute('data-subfiltro-limpar')) {
+            subfiltroAtivoPorArea[nomeArea] = null;
+          } else {
+            const alvo = botao.dataset.subfiltro ?? '';
+            subfiltroAtivoPorArea[nomeArea] = subfiltroAtivoPorArea[nomeArea] === alvo ? null : alvo;
+          }
+          botoesArea.forEach((b) => {
+            b.classList.toggle(
+              'active',
+              !b.hasAttribute('data-subfiltro-limpar') && b.dataset.subfiltro === subfiltroAtivoPorArea[nomeArea]
+            );
+          });
+          aplicarFiltros();
+        });
+      });
+    });
+
     function aplicarFiltros() {
-      const termo = normalizar((input?.value ?? '').trim().toLowerCase());
+      const termoBruto = normalizar((input?.value ?? '').trim().toLowerCase());
+      const termos = termoBruto === '' ? [] : termosDeBusca(termoBruto);
 
       cards.forEach((card) => {
-        const buscaOk = termo === '' || (card.dataset.busca ?? '').includes(termo);
-        card.hidden = !buscaOk;
+        const busca = card.dataset.busca ?? '';
+        const buscaOk = termoBruto === '' || termos.some((t) => busca.includes(t));
+
+        const areaDoCard = card.dataset.categoria ?? '';
+        const subfiltroAtivo = subfiltroAtivoPorArea[areaDoCard] ?? null;
+        const subcategorias = (card.dataset.subcategorias ?? '').split(',').filter(Boolean);
+        const subfiltroOk = !subfiltroAtivo || subcategorias.includes(subfiltroAtivo);
+
+        card.hidden = !(buscaOk && subfiltroOk);
       });
 
       let algumaSecaoVisivel = false;
@@ -218,7 +299,7 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
       if (estadoVazioGeral) estadoVazioGeral.hidden = algumaSecaoVisivel;
 
       if (destaquesSection) {
-        destaquesSection.hidden = termo !== '' || categoriaAtiva !== null;
+        destaquesSection.hidden = termoBruto !== '' || categoriaAtiva !== null;
       }
     }
 
@@ -230,6 +311,17 @@ const videosOrdenados = [...videos].sort((a, b) => Number(b.destaque) - Number(a
         categoriaAtiva = categoriaAtiva === alvo ? null : alvo;
         chips.forEach((c) => c.classList.toggle('active', c.dataset.filtro === categoriaAtiva));
         aplicarFiltros();
+      });
+    });
+
+    document.querySelectorAll<HTMLElement>('[data-ir-para-categoria]').forEach((botao) => {
+      botao.addEventListener('click', () => {
+        const alvo = botao.dataset.irParaCategoria ?? '';
+        if (categoriaAtiva !== alvo) {
+          const chip = Array.from(chips).find((c) => c.dataset.filtro === alvo);
+          chip?.click();
+        }
+        document.querySelector(`[data-categoria-secao="${alvo}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
 

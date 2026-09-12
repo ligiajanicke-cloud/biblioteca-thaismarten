@@ -1,0 +1,61 @@
+---
+const BLOCOS = [
+  { titulo: 'Luz', texto: 'À noite, reduza a exposição a luzes muito intensas e prefira ambientes mais aconchegantes e com menor luminosidade.' },
+  { titulo: 'Cafeína', texto: 'Evite cafeína no período da tarde/noite, principalmente se você percebe impacto na qualidade do seu sono.' },
+  { titulo: 'Ambiente', texto: 'Deixe o quarto o mais confortável possível: escuro, silencioso, fresco e organizado.' },
+  { titulo: 'Horário', texto: 'Tente manter horários relativamente consistentes para dormir e acordar. Seu corpo responde bem à previsibilidade.' },
+  { titulo: 'Jantar', texto: 'Evite refeições muito volumosas próximo ao horário de dormir. Respeite a estratégia alimentar que foi definida para você.' },
+  { titulo: 'Telas', texto: 'Reduza celular, computador e televisão próximo ao momento de dormir sempre que possível. Se precisar utilizá-los, diminua o brilho e a intensidade da exposição à luz.' },
+  { titulo: 'Desaceleração', texto: 'Crie um pequeno ritual de transição para o sono: banho, leitura, respiração, oração, música tranquila ou outra atividade que ajude você a reduzir o ritmo do dia.' },
+];
+
+const PERGUNTAS = [
+  'Meu ambiente está preparado para o sono?',
+  'Estou reduzindo estímulos?',
+  'Estou respeitando meu horário?',
+  'Meu corpo teve tempo para desacelerar?',
+];
+
+const RECURSOS = [
+  { nome: 'Óculos bloqueadores de luz azul/verde', descricao: 'ajudam a reduzir a exposição à luz no período noturno.' },
+  { nome: 'Óleo essencial de lavanda', descricao: 'pode fazer parte do ritual de desaceleração e preparação do ambiente.' },
+  { nome: 'Magnésio + inositol', descricao: 'pode ser utilizado como recurso complementar quando houver indicação individual.' },
+  { nome: 'Anel inteligente', descricao: 'ajuda a acompanhar padrões de sono, rotina e recuperação.' },
+];
+---
+<div class="sono-checklist">
+  <h3 class="sono-checklist-titulo">Checklist para uma boa rotina noturna</h3>
+  <p class="sono-checklist-intro">
+    Uma boa noite de sono começa antes de deitar. Pequenos ajustes na rotina podem ajudar seu corpo a entender que é hora de desacelerar.
+  </p>
+
+  <div class="sono-checklist-grid">
+    {BLOCOS.map((bloco) => (
+      <div class="sono-checklist-bloco">
+        <span class="sono-checklist-bloco-titulo">{bloco.titulo}</span>
+        <p>{bloco.texto}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="sono-checklist-perguntas">
+    <p class="sono-checklist-perguntas-titulo">Antes de dormir, pergunte:</p>
+    <ul>
+      {PERGUNTAS.map((pergunta) => <li>{pergunta}</li>)}
+    </ul>
+  </div>
+
+  <p class="sono-checklist-destaque">
+    O objetivo não é criar uma rotina perfeita. É repetir sinais que ajudem seu corpo a entender que o dia terminou.
+  </p>
+</div>
+
+<div class="sono-ligacao">
+  <h3 class="sono-ligacao-titulo">E onde entram os recursos abaixo?</h3>
+  <p>Os produtos desta seção podem ajudar a apoiar alguns pilares da sua rotina noturna, quando fizerem sentido para o seu caso:</p>
+  <ul class="sono-ligacao-lista">
+    {RECURSOS.map((recurso) => (
+      <li><strong>{recurso.nome}</strong> → {recurso.descricao}</li>
+    ))}
+  </ul>
+</div>
