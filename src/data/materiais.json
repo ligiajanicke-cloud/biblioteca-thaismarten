@@ -90,6 +90,16 @@
     "tags": ["proteína", "equivalência proteica", "whey protein", "laticínios", "substituição", "caseína a1"]
   },
   {
+    "id": "guia-refeicoes-fora-e-viagem",
+    "titulo": "Guia Refeições Fora e Viagem",
+    "descricao": "Como manter sua estratégia sem transformar tudo em perfeição: priorize a proteína, respeite suas condições, planeje-se antes de sair e retome a rotina normalmente ao voltar.",
+    "categorias": ["Te auxilia no dia a dia"],
+    "arquivo": "/materiais/guia-refeicoes-fora-e-viagem.pdf",
+    "imagem": "",
+    "destaque": false,
+    "tags": ["comer fora", "viagem", "viajar", "restaurante", "refeições fora", "fora de casa", "planejamento", "hidratação"]
+  },
+  {
     "id": "equivalencia-proteica-sem-caseina-a1",
     "titulo": "Tabela de Equivalência Proteica: Sem Caseína A1",
     "descricao": "Substitua as opções abaixo mantendo a mesma quantidade de proteína, sem glúten e sem caseína A1: carnes, peixes, ovos, laticínios de búfala, ovelha e cabra, e suplementos sem leite indicados.",
